@@ -923,7 +923,7 @@ flutter:
         ProcessManager: () => FakeProcessManager.any(),
       });
 
-      testUsingContext('pluginClass: none doesn\'t trigger registrant entry on macOS', () async {
+      testUsingContext("pluginClass: none doesn't trigger registrant entry on macOS", () async {
         when(flutterProject.isModule).thenReturn(true);
         // Create a plugin without a pluginClass.
         final Directory pluginDirectory = createFakePlugin(fs);
@@ -1007,7 +1007,7 @@ flutter:
         ProcessManager: () => FakeProcessManager.any(),
       });
 
-      testUsingContext('pluginClass: none doesn\'t trigger registrant entry on Linux', () async {
+      testUsingContext("pluginClass: none doesn't trigger registrant entry on Linux", () async {
         when(flutterProject.isModule).thenReturn(false);
         // Create a plugin without a pluginClass.
         final Directory pluginDirectory = createFakePlugin(fs);
@@ -1115,7 +1115,7 @@ flutter:
         ProcessManager: () => FakeProcessManager.any(),
       });
 
-      testUsingContext('pluginClass: none doesn\'t trigger registrant entry on Windows', () async {
+      testUsingContext("pluginClass: none doesn't trigger registrant entry on Windows", () async {
         when(flutterProject.isModule).thenReturn(false);
         // Create a plugin without a pluginClass.
         final Directory pluginDirectory = createFakePlugin(fs);
