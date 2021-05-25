@@ -285,8 +285,9 @@ class _MultipleTickerTestState extends State<_MultipleTickerTest> with TickerPro
   void initState() {
     super.initState();
     const Duration duration = Duration(seconds: 100);
-    controllers.add(AnimationController(vsync: this, duration: duration));
-    controllers.add(AnimationController(vsync: this, duration: duration));
+    controllers
+      ..add(AnimationController(vsync: this, duration: duration))
+      ..add(AnimationController(vsync: this, duration: duration));
   }
 
   @override

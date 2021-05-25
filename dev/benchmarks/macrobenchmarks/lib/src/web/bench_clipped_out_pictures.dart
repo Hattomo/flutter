@@ -55,18 +55,19 @@ class BenchClippedOutPictures extends SceneBuilderRecorder {
       );
 
       final PictureRecorder pictureRecorder = PictureRecorder();
-      final Canvas canvas = Canvas(pictureRecorder);
-      canvas.save();
-      canvas.drawCircle(Offset(pictureSize.width / 2, pictureSize.height / 2), 5.0, paint);
-      canvas.drawRect(Rect.fromCenter(
+      final Canvas canvas = Canvas(pictureRecorder)
+        ..save()
+        ..drawCircle(Offset(pictureSize.width / 2, pictureSize.height / 2), 5.0, paint)
+        ..drawRect(Rect.fromCenter(
         center: Offset(pictureSize.width / 2, pictureSize.height / 2),
         width: pictureSize.width / 6,
         height: pictureSize.height / 6,
-      ), paint);
-      canvas.restore();
+      ), paint)
+        ..restore();
       final Picture picture = pictureRecorder.endRecording();
-      sceneBuilder.addPicture(Offset.zero, picture);
-      sceneBuilder.pop();
+      sceneBuilder
+        ..addPicture(Offset.zero, picture)
+        ..pop();
     }
 
     // Starting with the top-left cell, fill every cell.

@@ -299,8 +299,9 @@ void main() {
     final TestPointer mousePointer = TestPointer(2, PointerDeviceKind.mouse);
     final PointerDownEvent down2 = mousePointer.down(const Offset(10.0, 20.0));
     scale.addPointer(down2);
-    tester.closeArena(2);
-    tester.route(down2);
+    tester
+      ..closeArena(2)
+      ..route(down2);
 
     // Mouse-generated events are ignored.
     expect(didEndScale, isFalse);

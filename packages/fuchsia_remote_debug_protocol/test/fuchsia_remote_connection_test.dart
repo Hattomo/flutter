@@ -94,19 +94,20 @@ void main() {
         return Future<PortForwarder>(() {
           final FakePortForwarder pf = FakePortForwarder();
           forwardedPorts.add(pf);
-          pf.port = port++;
-          pf.remotePort = remotePort;
+          pf
+            ..port = port++
+            ..remotePort = remotePort;
           return pf;
         });
       }
 
       fuchsiaPortForwardingFunction = fakePortForwardingFunction;
-      final FakeSshCommandRunner fakeRunner = FakeSshCommandRunner();
+      final FakeSshCommandRunner fakeRunner = FakeSshCommandRunner()
       // Adds some extra junk to make sure the strings will be cleaned up.
-      fakeRunner.findResponse = <String>['/hub/blah/blah/blah/vmservice-port\n'];
-      fakeRunner.lsResponse = <String>['123\n\n\n', '456  ', '789'];
-      fakeRunner.address = 'fe80::8eae:4cff:fef4:9247';
-      fakeRunner.interface = 'eno1';
+        ..findResponse = <String>['/hub/blah/blah/blah/vmservice-port\n']
+        ..lsResponse = <String>['123\n\n\n', '456  ', '789']
+        ..address = 'fe80::8eae:4cff:fef4:9247'
+        ..interface = 'eno1';
 
       final FuchsiaRemoteConnection connection =
           await FuchsiaRemoteConnection.connectWithSshCommandRunner(fakeRunner);
@@ -161,20 +162,21 @@ void main() {
         return Future<PortForwarder>(() {
           final FakePortForwarder pf = FakePortForwarder();
           forwardedPorts.add(pf);
-          pf.port = port++;
-          pf.remotePort = remotePort;
-          pf.openPortAddress = 'fe80::1:2%eno2';
+          pf
+            ..port = port++
+            ..remotePort = remotePort
+            ..openPortAddress = 'fe80::1:2%eno2';
           return pf;
         });
       }
 
       fuchsiaPortForwardingFunction = fakePortForwardingFunction;
-      final FakeSshCommandRunner fakeRunner = FakeSshCommandRunner();
+      final FakeSshCommandRunner fakeRunner = FakeSshCommandRunner()
       // Adds some extra junk to make sure the strings will be cleaned up.
-      fakeRunner.findResponse = <String>['/hub/blah/blah/blah/vmservice-port\n'];
-      fakeRunner.lsResponse = <String>['123\n\n\n', '456  ', '789'];
-      fakeRunner.address = 'fe80::8eae:4cff:fef4:9247';
-      fakeRunner.interface = 'eno1';
+        ..findResponse = <String>['/hub/blah/blah/blah/vmservice-port\n']
+        ..lsResponse = <String>['123\n\n\n', '456  ', '789']
+        ..address = 'fe80::8eae:4cff:fef4:9247'
+        ..interface = 'eno1';
       final FuchsiaRemoteConnection connection =
           await FuchsiaRemoteConnection.connectWithSshCommandRunner(fakeRunner);
 
@@ -228,18 +230,19 @@ void main() {
         return Future<PortForwarder>(() {
           final FakePortForwarder pf = FakePortForwarder();
           forwardedPorts.add(pf);
-          pf.port = port++;
-          pf.remotePort = remotePort;
+          pf
+            ..port = port++
+            ..remotePort = remotePort;
           return pf;
         });
       }
 
       fuchsiaPortForwardingFunction = fakePortForwardingFunction;
-      final FakeSshCommandRunner fakeRunner = FakeSshCommandRunner();
+      final FakeSshCommandRunner fakeRunner = FakeSshCommandRunner()
       // Adds some extra junk to make sure the strings will be cleaned up.
-      fakeRunner.findResponse = <String>['/hub/blah/blah/blah/vmservice-port\n'];
-      fakeRunner.lsResponse = <String>['123\n\n\n', '456  ', '789'];
-      fakeRunner.address = '196.168.1.4';
+        ..findResponse = <String>['/hub/blah/blah/blah/vmservice-port\n']
+        ..lsResponse = <String>['123\n\n\n', '456  ', '789']
+        ..address = '196.168.1.4';
 
       final FuchsiaRemoteConnection connection =
           await FuchsiaRemoteConnection.connectWithSshCommandRunner(fakeRunner);

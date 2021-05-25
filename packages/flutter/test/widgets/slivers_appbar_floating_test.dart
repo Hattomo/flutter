@@ -188,8 +188,9 @@ void main() {
     verifyPaintPosition(key2, Offset.zero, false);
     verifyPaintPosition(key3, Offset.zero, true);
 
-    position.animateTo(bigHeight + delegate.maxExtent * 1.9, curve: Curves.linear, duration: const Duration(minutes: 1));
-    position.updateUserScrollDirection(ScrollDirection.forward);
+    position
+      ..animateTo(bigHeight + delegate.maxExtent * 1.9, curve: Curves.linear, duration: const Duration(minutes: 1))
+      ..updateUserScrollDirection(ScrollDirection.forward);
     await tester.pumpAndSettle(const Duration(milliseconds: 1000));
     verifyPaintPosition(key1, Offset.zero, false);
     verifyPaintPosition(key2, Offset.zero, true);
@@ -221,8 +222,8 @@ void main() {
     expect(tester.getTopLeft(find.byType(Container)), Offset.zero);
     expect(tester.getTopLeft(find.text('X')), const Offset(0.0, 200.0));
 
-    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position;
-    position.jumpTo(-50.0);
+    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position
+      ..jumpTo(-50.0);
     await tester.pump();
 
     expect(tester.getTopLeft(find.byType(Container)), Offset.zero);
@@ -278,8 +279,8 @@ void main() {
       // Pointer scroll the app bar away, we will scroll back less to validate the
       // app bar floats back in.
       final Offset point1 = tester.getCenter(find.text('Item 5'));
-      final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse);
-      testPointer.hover(point1);
+      final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse)
+        ..hover(point1);
       await tester.sendEventToBinding(testPointer.scroll(const Offset(0.0, 300.0)));
       await tester.pump();
       expect(find.text('Test Title'), findsNothing);
@@ -328,8 +329,8 @@ void main() {
       // Pointer scroll the app bar away, we will scroll back less to validate the
       // app bar floats back in.
       final Offset point1 = tester.getCenter(find.text('Item 5'));
-      final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse);
-      testPointer.hover(point1);
+      final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse)
+        ..hover(point1);
       await tester.sendEventToBinding(testPointer.scroll(const Offset(0.0, 300.0)));
       await tester.pump();
       expect(find.text('Test Title'), findsNothing);
@@ -375,8 +376,8 @@ void main() {
       // Pointer scroll the app bar away, we will scroll back less to validate the
       // app bar floats back in and then snaps to full size.
       final Offset point1 = tester.getCenter(find.text('Item 5'));
-      final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse);
-      testPointer.hover(point1);
+      final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse)
+        ..hover(point1);
       await tester.sendEventToBinding(testPointer.scroll(const Offset(0.0, 300.0)));
       await tester.pump();
       expect(find.text('Test Title'), findsNothing);

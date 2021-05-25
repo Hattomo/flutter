@@ -805,8 +805,8 @@ void createPaths() {
 }
 
 void pathOps0() {
-  final Path path0 = Path();
-  path0.addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(20, 20, 60, 60), const Radius.circular(10)));
+  final Path path0 = Path()
+    ..addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(20, 20, 60, 60), const Radius.circular(10)));
   gBounds = path0.getBounds();
   gBounds = path0.getBounds();
   gBounds = path0.getBounds();
@@ -817,8 +817,8 @@ void pathOps0() {
 }
 
 void pathOps1() {
-  final Path path1 = Path();
-  path1.addOval(const Rect.fromLTRB(20, 20, 60, 60));
+  final Path path1 = Path()
+    ..addOval(const Rect.fromLTRB(20, 20, 60, 60));
   gBounds = path1.getBounds();
   gBounds = path1.getBounds();
   gBounds = path1.getBounds();
@@ -835,12 +835,12 @@ void pathOps1() {
 }
 
 void pathOps2() {
-  final Path path2 = Path();
-  path2.moveTo(20, 60);
-  path2.quadraticBezierTo(60, 20, 60, 60);
-  path2.close();
-  path2.moveTo(60, 20);
-  path2.quadraticBezierTo(60, 60, 20, 60);
+  final Path path2 = Path()
+    ..moveTo(20, 60)
+    ..quadraticBezierTo(60, 20, 60, 60)
+    ..close()
+    ..moveTo(60, 20)
+    ..quadraticBezierTo(60, 60, 20, 60);
   gBounds = path2.getBounds();
   gBounds = path2.getBounds();
   gBounds = path2.getBounds();
@@ -857,13 +857,13 @@ void pathOps2() {
 }
 
 void pathOps3() {
-  final Path path3 = Path();
-  path3.moveTo(20, 30);
-  path3.lineTo(40, 20);
-  path3.lineTo(60, 30);
-  path3.lineTo(60, 60);
-  path3.lineTo(20, 60);
-  path3.close();
+  final Path path3 = Path()
+    ..moveTo(20, 30)
+    ..lineTo(40, 20)
+    ..lineTo(60, 30)
+    ..lineTo(60, 60)
+    ..lineTo(20, 60)
+    ..close();
   gBounds = path3.getBounds();
   gBounds = path3.getBounds();
   gBounds = path3.getBounds();
@@ -887,15 +887,15 @@ void pathOps4() {
 }
 
 void pathOps5() {
-  final Path path5 = Path();
-  path5.addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(8, 8, 328, 248), const Radius.circular(16)));
+  final Path path5 = Path()
+    ..addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(8, 8, 328, 248), const Radius.circular(16)));
   _runPathTest(path5);
   allPaths.add(path5);
 }
 
 void pathOps6() {
-  final Path path6 = Path();
-  path6.addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 136, 970, 1144), Radius.zero));
+  final Path path6 = Path()
+    ..addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 136, 970, 1144), Radius.zero));
   gBounds = path6.getBounds();
   allPaths.add(path6);
 }
@@ -956,8 +956,8 @@ void pathOps8() {
 }
 
 void pathOps9() {
-  final Path path9 = Path();
-  path9.addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 179.5, 200), const Radius.circular(10)));
+  final Path path9 = Path()
+    ..addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 179.5, 200), const Radius.circular(10)));
   gFillType = path9.fillType;
   path10 = path9.shift(const Offset(15, 8));
   gFillType = path9.fillType;
@@ -1011,8 +1011,8 @@ void pathOps10() {
 }
 
 void pathOps11() {
-  final Path path11 = Path();
-  path11.addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 179.5, 200), const Radius.circular(10)));
+  final Path path11 = Path()
+    ..addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 179.5, 200), const Radius.circular(10)));
   gFillType = path11.fillType;
   path12 = path11.shift(const Offset(15, 8));
   gFillType = path11.fillType;
@@ -1066,8 +1066,8 @@ void pathOps12() {
 }
 
 void pathOps13() {
-  final Path path13 = Path();
-  path13.addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 179.5, 200), const Radius.circular(10)));
+  final Path path13 = Path()
+    ..addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 179.5, 200), const Radius.circular(10)));
   gFillType = path13.fillType;
   path14 = path13.shift(const Offset(15, 8));
   gFillType = path13.fillType;
@@ -1121,8 +1121,8 @@ void pathOps14() {
 }
 
 void pathOps15() {
-  final Path path15 = Path();
-  path15.addOval(const Rect.fromLTRB(0, 0, 58, 58));
+  final Path path15 = Path()
+    ..addOval(const Rect.fromLTRB(0, 0, 58, 58));
   gFillType = path15.fillType;
   path16 = path15.shift(const Offset(860, 79));
   gFillType = path15.fillType;
@@ -1142,8 +1142,8 @@ void pathOps16() {
 }
 
 void pathOps17() {
-  final Path path17 = Path();
-  path17.addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 250.66666666666666, 585), const Radius.circular(10)));
+  final Path path17 = Path()
+    ..addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 250.66666666666666, 585), const Radius.circular(10)));
   gFillType = path17.fillType;
   path18 = path17.shift(const Offset(81, 0));
   gFillType = path17.fillType;
@@ -1195,8 +1195,8 @@ void pathOps18() {
 }
 
 void pathOps19() {
-  final Path path19 = Path();
-  path19.addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(81, 0, 331.66666666666663, 84), Radius.zero));
+  final Path path19 = Path()
+    ..addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(81, 0, 331.66666666666663, 84), Radius.zero));
   gBounds = path19.getBounds();
   allPaths.add(path19);
 }
@@ -1242,12 +1242,12 @@ void pathOps23() {
 }
 
 void pathOps24() {
-  final Path path24 = Path();
-  path24.reset();
-  path24.moveTo(234.66666666666666, 101);
-  path24.lineTo(96, 101);
-  path24.lineTo(96, 100);
-  path24.lineTo(234.66666666666666, 100);
+  final Path path24 = Path()
+    ..reset()
+    ..moveTo(234.66666666666666, 101)
+    ..lineTo(96, 101)
+    ..lineTo(96, 100)
+    ..lineTo(234.66666666666666, 100);
   gBounds = path24.getBounds();
   _runPathTest(path24);
   gFillType = path24.fillType;
@@ -1255,19 +1255,19 @@ void pathOps24() {
 }
 
 void pathOps25() {
-  final Path path25 = Path();
-  path25.addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 250.66666666666666, 101), Radius.zero));
+  final Path path25 = Path()
+    ..addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 250.66666666666666, 101), Radius.zero));
   gBounds = path25.getBounds();
   allPaths.add(path25);
 }
 
 void pathOps26() {
-  final Path path26 = Path();
-  path26.reset();
-  path26.moveTo(234.66666666666666, 101);
-  path26.lineTo(96, 101);
-  path26.lineTo(96, 100);
-  path26.lineTo(234.66666666666666, 100);
+  final Path path26 = Path()
+    ..reset()
+    ..moveTo(234.66666666666666, 101)
+    ..lineTo(96, 101)
+    ..lineTo(96, 100)
+    ..lineTo(234.66666666666666, 100);
   gBounds = path26.getBounds();
   _runPathTest(path26);
   gFillType = path26.fillType;
@@ -1320,12 +1320,12 @@ void pathOps31() {
 }
 
 void pathOps32() {
-  final Path path32 = Path();
-  path32.reset();
-  path32.moveTo(234.66666666666666, 87);
-  path32.lineTo(96, 87);
-  path32.lineTo(96, 86);
-  path32.lineTo(234.66666666666666, 86);
+  final Path path32 = Path()
+    ..reset()
+    ..moveTo(234.66666666666666, 87)
+    ..lineTo(96, 87)
+    ..lineTo(96, 86)
+    ..lineTo(234.66666666666666, 86);
   gBounds = path32.getBounds();
   allPaths.add(path32);
 }
@@ -1635,19 +1635,19 @@ void pathOps56() {
 }
 
 void pathOps57() {
-  final Path path57 = Path();
-  path57.addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 250.66666666666669, 73), Radius.zero));
+  final Path path57 = Path()
+    ..addRRect(RRect.fromRectAndRadius(const Rect.fromLTRB(0, 0, 250.66666666666669, 73), Radius.zero));
   gBounds = path57.getBounds();
   allPaths.add(path57);
 }
 
 void pathOps58() {
-  final Path path58 = Path();
-  path58.reset();
-  path58.moveTo(234.66666666666669, 73);
-  path58.lineTo(96, 73);
-  path58.lineTo(96, 72);
-  path58.lineTo(234.66666666666669, 72);
+  final Path path58 = Path()
+    ..reset()
+    ..moveTo(234.66666666666669, 73)
+    ..lineTo(96, 73)
+    ..lineTo(96, 72)
+    ..lineTo(234.66666666666669, 72);
   gBounds = path58.getBounds();
   _runPathTest(path58);
   gFillType = path58.fillType;
@@ -1932,12 +1932,12 @@ void pathOps91() {
 }
 
 void pathOps92() {
-  final Path path92 = Path();
-  path92.reset();
-  path92.moveTo(234.66666666666669, 73);
-  path92.lineTo(96, 73);
-  path92.lineTo(96, 72);
-  path92.lineTo(234.66666666666669, 72);
+  final Path path92 = Path()
+    ..reset()
+    ..moveTo(234.66666666666669, 73)
+    ..lineTo(96, 73)
+    ..lineTo(96, 72)
+    ..lineTo(234.66666666666669, 72);
   gBounds = path92.getBounds();
   _runPathTest(path92);
   gFillType = path92.fillType;
@@ -1952,12 +1952,12 @@ void pathOps93() {
 }
 
 void pathOps94() {
-  final Path path94 = Path();
-  path94.reset();
-  path94.moveTo(234.66666666666666, 101);
-  path94.lineTo(96, 101);
-  path94.lineTo(96, 100);
-  path94.lineTo(234.66666666666666, 100);
+  final Path path94 = Path()
+    ..reset()
+    ..moveTo(234.66666666666666, 101)
+    ..lineTo(96, 101)
+    ..lineTo(96, 100)
+    ..lineTo(234.66666666666666, 100);
   gBounds = path94.getBounds();
   _runPathTest(path94);
   gFillType = path94.fillType;
@@ -1972,12 +1972,12 @@ void pathOps95() {
 }
 
 void pathOps96() {
-  final Path path96 = Path();
-  path96.reset();
-  path96.moveTo(234.66666666666666, 87);
-  path96.lineTo(96, 87);
-  path96.lineTo(96, 86);
-  path96.lineTo(234.66666666666666, 86);
+  final Path path96 = Path()
+    ..reset()
+    ..moveTo(234.66666666666666, 87)
+    ..lineTo(96, 87)
+    ..lineTo(96, 86)
+    ..lineTo(234.66666666666666, 86);
   gBounds = path96.getBounds();
   _runPathTest(path96);
   gFillType = path96.fillType;

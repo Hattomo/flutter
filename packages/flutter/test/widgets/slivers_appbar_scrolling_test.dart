@@ -66,8 +66,8 @@ void main() {
         ),
       ),
     );
-    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position;
-    position.animateTo(RenderBigSliver.height + delegate.maxExtent - 5.0, curve: Curves.linear, duration: const Duration(minutes: 1));
+    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position
+      ..animateTo(RenderBigSliver.height + delegate.maxExtent - 5.0, curve: Curves.linear, duration: const Duration(minutes: 1));
     await tester.pumpAndSettle(const Duration(milliseconds: 1000));
     final RenderBox box = tester.renderObject<RenderBox>(find.byType(Container));
     final Rect rect = Rect.fromPoints(box.localToGlobal(Offset.zero), box.localToGlobal(box.size.bottomRight(Offset.zero)));
@@ -98,8 +98,8 @@ void main() {
     expect(tester.getTopLeft(find.byType(Container)), Offset.zero);
     expect(tester.getTopLeft(find.text('X')), const Offset(0.0, 200.0));
 
-    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position;
-    position.jumpTo(-50.0);
+    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position
+      ..jumpTo(-50.0);
     await tester.pump();
 
     expect(tester.getTopLeft(find.byType(Container)), Offset.zero);
@@ -130,8 +130,8 @@ void main() {
     expect(tester.getTopLeft(find.byType(Container)), Offset.zero);
     expect(tester.getTopLeft(find.text('X')), const Offset(0.0, 200.0));
 
-    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position;
-    position.jumpTo(-50.0);
+    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position
+      ..jumpTo(-50.0);
     await tester.pump();
 
     expect(tester.getTopLeft(find.byType(Container)), Offset.zero);

@@ -347,8 +347,8 @@ class TestSemantics {
   @override
   String toString([ int indentAmount = 0 ]) {
     final String indent = '  ' * indentAmount;
-    final StringBuffer buf = StringBuffer();
-    buf.writeln('$indent${objectRuntimeType(this, 'TestSemantics')}(');
+    final StringBuffer buf = StringBuffer()
+      ..writeln('$indent${objectRuntimeType(this, 'TestSemantics')}(');
     if (id != null)
       buf.writeln('$indent  id: $id,');
     if (flags is int && flags != 0 || flags is List<SemanticsFlag> && (flags as List<SemanticsFlag>).isNotEmpty)
@@ -383,8 +383,9 @@ class TestSemantics {
     for (final TestSemantics child in children) {
       buf.writeln('${child.toString(indentAmount + 2)},');
     }
-    buf.writeln('$indent  ],');
-    buf.write('$indent)');
+    buf
+      ..writeln('$indent  ],')
+      ..write('$indent)');
     return buf.toString();
   }
 }

@@ -147,11 +147,11 @@ void main() {
       ),
     ));
 
-    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position;
-    position.addListener(() {
+    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position
+      ..addListener(() {
       count++;
-    });
-    position.jumpTo(100);
+    })
+    ..jumpTo(100);
 
     expect(count, 1);
   });
@@ -244,8 +244,8 @@ void main() {
     expect(buildCount, 2);
     expect(loadedWithDeferral, 0);
 
-    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position;
-    position.jumpTo(height * 100);
+    final ScrollPosition position = tester.state<ScrollableState>(find.byType(Scrollable)).position
+      ..jumpTo(height * 100);
     await tester.pump();
 
     // All but the first two that were loaded normally should have gotten a

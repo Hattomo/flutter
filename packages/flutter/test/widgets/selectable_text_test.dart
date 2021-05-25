@@ -1407,8 +1407,8 @@ void main() {
     await tester.tap(find.byKey(key1));
     await tester.pump();
     final EditableText editableTextWidget = tester.widget(find.byType(EditableText).first);
-    final TextEditingController controller = editableTextWidget.controller;
-    controller.selection = const TextSelection(baseOffset: 0, extentOffset: 3);
+    final TextEditingController controller = editableTextWidget.controller
+      ..selection = const TextSelection(baseOffset: 0, extentOffset: 3);
     await tester.pump();
     expect(controller.selection, isNot(equals(TextRange.empty)));
 

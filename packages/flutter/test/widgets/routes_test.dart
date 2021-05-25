@@ -416,10 +416,11 @@ void main() {
 
   testWidgets('Route localHistory - popUntil', (WidgetTester tester) async {
     final TestRoute routeA = TestRoute('A');
-    routeA.addLocalHistoryEntry(LocalHistoryEntry(
+    routeA
+    ..addLocalHistoryEntry(LocalHistoryEntry(
       onRemove: () { routeA.log('onRemove 0'); },
-    ));
-    routeA.addLocalHistoryEntry(LocalHistoryEntry(
+    ))
+    ..addLocalHistoryEntry(LocalHistoryEntry(
       onRemove: () { routeA.log('onRemove 1'); },
     ));
     final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -486,8 +487,9 @@ void main() {
       observer.subscribe(pageRouteAware, pageRoute);
       expect(pageRouteAware.didPushCount, 1);
 
-      observer.didPush(route, pageRoute);
-      observer.didPop(route, pageRoute);
+      observer
+        ..didPush(route, pageRoute)
+        ..didPop(route, pageRoute);
 
       expect(pageRouteAware.didPushCount, 1);
       expect(pageRouteAware.didPopCount, 0);
@@ -497,8 +499,9 @@ void main() {
       final RouteObserver<PageRoute<dynamic>> observer = RouteObserver<PageRoute<dynamic>>();
       final MockRouteAware pageRouteAware = MockRouteAware();
       final MockPageRoute pageRoute = MockPageRoute();
-      observer.subscribe(pageRouteAware, pageRoute);
-      observer.subscribe(pageRouteAware, pageRoute);
+      observer
+        ..subscribe(pageRouteAware, pageRoute)
+        ..subscribe(pageRouteAware, pageRoute);
       expect(pageRouteAware.didPushCount, 1);
     });
 
@@ -507,14 +510,15 @@ void main() {
       final MockRouteAware pageRouteAware = MockRouteAware();
       final MockPageRoute pageRoute = MockPageRoute();
       final MockPageRoute nextPageRoute = MockPageRoute();
-      observer.subscribe(pageRouteAware, pageRoute);
-      observer.subscribe(pageRouteAware, nextPageRoute);
+      observer
+        ..subscribe(pageRouteAware, pageRoute)
+        ..subscribe(pageRouteAware, nextPageRoute);
       expect(pageRouteAware.didPushCount, 2);
 
-      observer.unsubscribe(pageRouteAware);
-
-      observer.didPush(nextPageRoute, pageRoute);
-      observer.didPop(nextPageRoute, pageRoute);
+      observer
+        ..unsubscribe(pageRouteAware)
+        ..didPush(nextPageRoute, pageRoute)
+        ..didPop(nextPageRoute, pageRoute);
 
       expect(pageRouteAware.didPushCount, 2);
       expect(pageRouteAware.didPopCount, 0);
@@ -1009,8 +1013,8 @@ void main() {
 
       // Close the dialog.
       final StatefulElement navigatorElement = find.byType(Navigator).evaluate().last as StatefulElement;
-      final NavigatorState navigatorState = navigatorElement.state as NavigatorState;
-      navigatorState.pop();
+      final NavigatorState navigatorState = navigatorElement.state as NavigatorState
+        ..pop();
       await tester.pumpAndSettle();
       expect(find.byType(ModalBarrier), findsNWidgets(1));
     });
@@ -1044,8 +1048,8 @@ void main() {
 
       // Close the dialog.
       final StatefulElement navigatorElement = find.byType(Navigator).evaluate().last as StatefulElement;
-      final NavigatorState navigatorState = navigatorElement.state as NavigatorState;
-      navigatorState.pop();
+      final NavigatorState navigatorState = navigatorElement.state as NavigatorState
+        ..pop();
       await tester.pumpAndSettle();
       expect(find.byType(ModalBarrier), findsNWidgets(1));
     });
@@ -1697,8 +1701,8 @@ void main() {
         home: WidgetWithLocalHistory(),
       ));
 
-      final WidgetWithLocalHistoryState state = tester.state(find.byType(WidgetWithLocalHistory));
-      state.addLocalHistory();
+      final WidgetWithLocalHistoryState state = tester.state(find.byType(WidgetWithLocalHistory))
+        ..addLocalHistory();
       // Waits for modal route to update its internal state;
       await tester.pump();
 

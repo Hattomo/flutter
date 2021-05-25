@@ -287,8 +287,9 @@ mixin WidgetsBinding on BindingBase, ServicesBinding, SchedulerBinding, GestureB
     // properly setup the [defaultBinaryMessenger] instance.
     _buildOwner = BuildOwner();
     buildOwner!.onBuildScheduled = _handleBuildScheduled;
-    window.onLocaleChanged = handleLocaleChanged;
-    window.onAccessibilityFeaturesChanged = handleAccessibilityFeaturesChanged;
+    window
+      ..onLocaleChanged = handleLocaleChanged
+      ..onAccessibilityFeaturesChanged = handleAccessibilityFeaturesChanged;
     SystemChannels.navigation.setMethodCallHandler(_handleNavigationInvocation);
     assert(() {
       FlutterErrorDetails.propertiesTransformers.add(debugTransformDebugCreator);
@@ -1035,8 +1036,8 @@ void runApp(Widget app) {
 String _debugDumpAppString() {
   assert(WidgetsBinding.instance != null);
   const String mode = kDebugMode ? 'DEBUG MODE' : 'PROFILE MODE';
-  final StringBuffer buffer = StringBuffer();
-  buffer.writeln('${WidgetsBinding.instance.runtimeType} - $mode');
+  final StringBuffer buffer = StringBuffer()
+    ..writeln('${WidgetsBinding.instance.runtimeType} - $mode');
   if (WidgetsBinding.instance!.renderViewElement != null) {
     buffer.writeln(WidgetsBinding.instance!.renderViewElement!.toStringDeep());
   } else {
@@ -1098,17 +1099,19 @@ class RenderObjectToWidgetAdapter<T extends RenderObject> extends RenderObjectWi
   /// Used by [runApp] to bootstrap applications.
   RenderObjectToWidgetElement<T> attachToRenderTree(BuildOwner owner, [ RenderObjectToWidgetElement<T>? element ]) {
     if (element == null) {
-      owner.lockState(() {
+      owner
+      ..lockState(() {
         element = createElement();
         assert(element != null);
         element!.assignOwner(owner);
-      });
-      owner.buildScope(element!, () {
+      })
+      ..buildScope(element!, () {
         element!.mount(null, null);
       });
     } else {
-      element._newWidget = this;
-      element.markNeedsBuild();
+      element
+        .._newWidget = this
+        ..markNeedsBuild();
     }
     return element!;
   }

@@ -122,8 +122,8 @@ class WebCallbackManager implements CallbackManager {
           throw UnimplementedError('${command.type} is not implemented');
       }
     } else {
-      final Map<String, dynamic> data = <String, dynamic>{};
-      data.addAll(WebDriverCommand.typeToMap(WebDriverCommandType.ack));
+      final Map<String, dynamic> data = <String, dynamic>{}
+        ..addAll(WebDriverCommand.typeToMap(WebDriverCommandType.ack));
       response = <String, String>{
         'message': Response.webDriverCommand(data: data).toJson(),
       };

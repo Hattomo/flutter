@@ -452,14 +452,16 @@ void main() {
     final TapGestureRecognizer tapB = TapGestureRecognizer();
 
     final List<String> log = <String>[];
-    tapA.onTapDown = (TapDownDetails details) { log.add('tapA onTapDown'); };
-    tapA.onTapUp = (TapUpDetails details) { log.add('tapA onTapUp'); };
-    tapA.onTap = () { log.add('tapA onTap'); };
-    tapA.onTapCancel = () { log.add('tapA onTapCancel'); };
-    tapB.onTapDown = (TapDownDetails details) { log.add('tapB onTapDown'); };
-    tapB.onTapUp = (TapUpDetails details) { log.add('tapB onTapUp'); };
-    tapB.onTap = () { log.add('tapB onTap'); };
-    tapB.onTapCancel = () { log.add('tapB onTapCancel'); };
+    tapA
+      ..onTapDown = (TapDownDetails details) { log.add('tapA onTapDown'); }
+      ..onTapUp = (TapUpDetails details) { log.add('tapA onTapUp'); }
+      ..onTap = () { log.add('tapA onTap'); }
+      ..onTapCancel = () { log.add('tapA onTapCancel'); };
+    tapB
+      ..onTapDown = (TapDownDetails details) { log.add('tapB onTapDown'); }
+      ..onTapUp = (TapUpDetails details) { log.add('tapB onTapUp'); }
+      ..onTap = () { log.add('tapB onTap'); }
+      ..onTapCancel = () { log.add('tapB onTapCancel'); };
 
     log.add('start');
     tapA.addPointer(down1);
@@ -757,12 +759,13 @@ void main() {
 
     testGesture('changing buttons after TapDown should not prevent the next tap', (GestureTester tester) {
       tap.addPointer(down1);
-      tester.closeArena(1);
-      tester.async.elapse(const Duration(milliseconds: 1000));
+      tester
+        ..closeArena(1)
+        ..async.elapse(const Duration(milliseconds: 1000))
 
-      tester.route(move1lr);
-      tester.route(move1r);
-      tester.route(up1);
+        ..route(move1lr)
+        ..route(move1r)
+        ..route(up1);
       GestureBinding.instance!.gestureArena.sweep(1);
       expect(recognized, <String>['down', 'cancel']);
 

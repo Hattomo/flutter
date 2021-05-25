@@ -378,8 +378,8 @@ void main() {
     expect(find.text('child 1'), findsOneWidget);
     expect(find.text('child 2'), findsOneWidget);
 
-    childList = createSwitchedChildList(childList, 0, 1);
-    childList.removeAt(2);
+    childList = createSwitchedChildList(childList, 0, 1)
+      ..removeAt(2);
     await tester.pumpWidget(
         SwitchingSliverListTest(viewportFraction: 0.1, children: childList),
     );

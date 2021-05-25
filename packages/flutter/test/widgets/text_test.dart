@@ -993,10 +993,10 @@ void main() {
   );
 
   testWidgets('Paragraph.getBoxesForRange returns nothing when selection range is zero length', (WidgetTester tester) async {
-    final ui.ParagraphBuilder builder = ui.ParagraphBuilder(ui.ParagraphStyle());
-    builder.addText('hello');
-    final ui.Paragraph paragraph = builder.build();
-    paragraph.layout(const ui.ParagraphConstraints(width: 1000));
+    final ui.ParagraphBuilder builder = ui.ParagraphBuilder(ui.ParagraphStyle())
+      ..addText('hello');
+    final ui.Paragraph paragraph = builder.build()
+      ..layout(const ui.ParagraphConstraints(width: 1000));
     expect(paragraph.getBoxesForRange(2, 2), isEmpty);
   });
 

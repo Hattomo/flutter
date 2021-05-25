@@ -914,8 +914,8 @@ void main() {
       );
       expect(find.text('CRASHHH'), findsNothing);
 
-      final TestChildState state = tester.state(find.byType(TestChildWidget));
-      state.toggleMe();
+      final TestChildState state = tester.state(find.byType(TestChildWidget))
+        ..toggleMe();
 
       await tester.pumpWidget(
         Directionality(
@@ -989,8 +989,8 @@ void main() {
     expect(find.byType(SizedBox), findsNWidgets(3 * 2));
     final Type toBeReplaced = table.column(2).last.runtimeType;
 
-    final TestChildState state = tester.state(find.byType(TestChildWidget).last);
-    state.toggleMe();
+    final TestChildState state = tester.state(find.byType(TestChildWidget).last)
+      ..toggleMe();
     await tester.pump();
 
     expect(find.byType(SizedBox), findsNWidgets(5));

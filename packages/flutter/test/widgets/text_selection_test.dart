@@ -491,8 +491,8 @@ void main() {
     // Regression test for https://github.com/flutter/flutter/issues/80119
     await pumpTextSelectionGestureDetectorBuilder(tester);
 
-    final FakeRenderEditable renderEditable = tester.renderObject(find.byType(FakeEditable));
-    renderEditable.text = const TextSpan(text: 'one two three four five six seven');
+    final FakeRenderEditable renderEditable = tester.renderObject(find.byType(FakeEditable))
+      ..text = const TextSpan(text: 'one two three four five six seven');
     await tester.pump();
 
     final TestGesture gesture = await tester.createGesture(
@@ -514,16 +514,18 @@ void main() {
     expect(renderEditable.selectWordCalled, isTrue);
 
     // Right clicking on a word within a selection shouldn't change the selection
-    renderEditable.selectWordCalled = false;
-    renderEditable.selection = const TextSelection(baseOffset: 3, extentOffset: 20);
+    renderEditable
+      ..selectWordCalled = false
+      ..selection = const TextSelection(baseOffset: 3, extentOffset: 20);
     await gesture.down(globalCharLocation);
     await gesture.up();
     await tester.pump();
     expect(renderEditable.selectWordCalled, isFalse);
 
     // Right clicking on a word within a reverse (right-to-left) selection shouldn't change the selection
-    renderEditable.selectWordCalled = false;
-    renderEditable.selection = const TextSelection(baseOffset: 20, extentOffset: 3);
+    renderEditable
+      ..selectWordCalled = false
+      ..selection = const TextSelection(baseOffset: 20, extentOffset: 3);
     await gesture.down(globalCharLocation);
     await gesture.up();
     await tester.pump();
@@ -626,12 +628,12 @@ void main() {
 
   testWidgets('test TextSelectionGestureDetectorBuilder drag with RenderEditable viewport offset change', (WidgetTester tester) async {
     await pumpTextSelectionGestureDetectorBuilder(tester);
-    final FakeRenderEditable renderEditable = tester.renderObject(find.byType(FakeEditable));
+    final FakeRenderEditable renderEditable = tester.renderObject(find.byType(FakeEditable))
 
     // Reconfigure the RenderEditable for multi-line.
-    renderEditable.maxLines = null;
-    renderEditable.offset = ViewportOffset.fixed(20.0);
-    renderEditable.layout(const BoxConstraints.tightFor(width: 400, height: 300.0));
+      ..maxLines = null
+      ..offset = ViewportOffset.fixed(20.0)
+      ..layout(const BoxConstraints.tightFor(width: 400, height: 300.0));
     await tester.pumpAndSettle();
 
     final TestGesture gesture = await tester.startGesture(
@@ -649,8 +651,9 @@ void main() {
     expect(renderEditable.selectPositionAtTo, const Offset(300.0, 200.0));
 
     // Move the viewport offset (scroll).
-    renderEditable.offset = ViewportOffset.fixed(150.0);
-    renderEditable.layout(const BoxConstraints.tightFor(width: 400, height: 300.0));
+    renderEditable
+      ..offset = ViewportOffset.fixed(150.0)
+      ..layout(const BoxConstraints.tightFor(width: 400, height: 300.0));
     await tester.pumpAndSettle();
 
     await gesture.moveTo(const Offset(300.0, 400.0));

@@ -471,11 +471,11 @@ void main() {
 
   testWidgets("SliverPadding consumes only its padding from the overlap of its parent's constraints", (WidgetTester tester) async {
     final _MockRenderSliver mock = _MockRenderSliver();
-    final RenderSliverPadding renderObject = RenderSliverPadding(
+    RenderSliverPadding(
       padding: const EdgeInsets.only(top: 20),
-    );
-    renderObject.child = mock;
-    renderObject.layout(const SliverConstraints(
+    )
+    ..child = mock
+    ..layout(const SliverConstraints(
         viewportMainAxisExtent: 100.0,
         overlap: 100.0,
         cacheOrigin: 0.0,
@@ -496,11 +496,11 @@ void main() {
 
   testWidgets("SliverPadding passes the overlap to the child if it's negative", (WidgetTester tester) async {
     final _MockRenderSliver mock = _MockRenderSliver();
-    final RenderSliverPadding renderObject = RenderSliverPadding(
+    RenderSliverPadding(
       padding: const EdgeInsets.only(top: 20),
-    );
-    renderObject.child = mock;
-    renderObject.layout(const SliverConstraints(
+    )
+    ..child = mock
+    ..layout(const SliverConstraints(
         viewportMainAxisExtent: 100.0,
         overlap: -100.0,
         cacheOrigin: 0.0,
@@ -523,9 +523,9 @@ void main() {
     final _MockRenderSliver mock = _MockRenderSliver();
     final RenderSliverPadding renderObject = RenderSliverPadding(
       padding: const EdgeInsets.only(top: 20),
-    );
-    renderObject.child = mock;
-    renderObject.layout(const SliverConstraints(
+    )
+    ..child = mock
+    ..layout(const SliverConstraints(
         viewportMainAxisExtent: 100.0,
         overlap: 100.0,
         cacheOrigin: 0.0,

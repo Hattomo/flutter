@@ -97,8 +97,8 @@ double getScrollVelocity(WidgetTester tester) {
 
 void resetScrollOffset(WidgetTester tester) {
   final RenderViewport viewport = tester.renderObject(find.byType(Viewport));
-  final ScrollPosition position = viewport.offset as ScrollPosition;
-  position.jumpTo(0.0);
+  final ScrollPosition position = viewport.offset as ScrollPosition
+    ..jumpTo(0.0);
 }
 
 void main() {
@@ -314,9 +314,9 @@ void main() {
   testWidgets('Scroll pointer signals are handled on Fuchsia', (WidgetTester tester) async {
     await pumpTest(tester, TargetPlatform.fuchsia);
     final Offset scrollEventLocation = tester.getCenter(find.byType(Viewport));
-    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse);
+    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse)
     // Create a hover event so that |testPointer| has a location when generating the scroll.
-    testPointer.hover(scrollEventLocation);
+      ..hover(scrollEventLocation);
     await tester.sendEventToBinding(testPointer.scroll(const Offset(0.0, 20.0)));
     expect(getScrollOffset(tester), 20.0);
     // Pointer signals should not cause overscroll.
@@ -331,9 +331,9 @@ void main() {
 
     await pumpDoubleScrollableTest(tester, TargetPlatform.fuchsia);
     final Offset scrollEventLocation = tester.getCenter(find.byType(Viewport).last);
-    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse);
+    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse)
     // Create a hover event so that |testPointer| has a location when generating the scroll.
-    testPointer.hover(scrollEventLocation);
+      ..hover(scrollEventLocation);
     await tester.sendEventToBinding(testPointer.scroll(const Offset(0.0, 20.0)));
     expect(getScrollOffset(tester, last: true), 20.0);
     // Pointer signals should not cause overscroll.
@@ -344,9 +344,9 @@ void main() {
   testWidgets('Scroll pointer signals are ignored when scrolling is disabled', (WidgetTester tester) async {
     await pumpTest(tester, TargetPlatform.fuchsia, scrollable: false);
     final Offset scrollEventLocation = tester.getCenter(find.byType(Viewport));
-    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse);
+    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse)
     // Create a hover event so that |testPointer| has a location when generating the scroll.
-    testPointer.hover(scrollEventLocation);
+      ..hover(scrollEventLocation);
     await tester.sendEventToBinding(testPointer.scroll(const Offset(0.0, 20.0)));
     expect(getScrollOffset(tester), 0.0);
   });
@@ -367,9 +367,9 @@ void main() {
     expect(lastUserScrollingDirection, ScrollDirection.reverse);
 
     final Offset scrollEventLocation = tester.getCenter(find.byType(Viewport));
-    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse);
+    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse)
     // Create a hover event so that |testPointer| has a location when generating the scroll.
-    testPointer.hover(scrollEventLocation);
+      ..hover(scrollEventLocation);
     await tester.sendEventToBinding(testPointer.scroll(const Offset(0.0, 20.0)));
 
     expect(lastUserScrollingDirection, ScrollDirection.reverse);
@@ -388,9 +388,9 @@ void main() {
     await pumpTest(tester, TargetPlatform.fuchsia, reverse: true);
 
     final Offset scrollEventLocation = tester.getCenter(find.byType(Viewport));
-    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse);
+    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse)
     // Create a hover event so that |testPointer| has a location when generating the scroll.
-    testPointer.hover(scrollEventLocation);
+      ..hover(scrollEventLocation);
     await tester.sendEventToBinding(testPointer.scroll(const Offset(0.0, -20.0)));
 
     expect(getScrollOffset(tester), 20.0);
@@ -1215,9 +1215,9 @@ void main() {
     expect(outerController.position.pixels, 0.0);
     expect(innerController.position.pixels, 0.0);
     final Offset outerScrollable = tester.getCenter(find.text('SingleChildScrollView 3'));
-    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse);
+    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse)
     // Hover over the outer scroll view and create a pointer scroll.
-    testPointer.hover(outerScrollable);
+      ..hover(outerScrollable);
     await tester.sendEventToBinding(testPointer.scroll(const Offset(0.0, 20.0)));
     await tester.pump(const Duration(milliseconds: 250));
     expect(outerController.position.pixels, 20.0);
@@ -1267,8 +1267,8 @@ void main() {
 
     // Hover over the scroll view and create a zero offset pointer scroll.
     final Offset scrollable = tester.getCenter(find.byType(SingleChildScrollView));
-    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse);
-    testPointer.hover(scrollable);
+    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse)
+      ..hover(scrollable);
     await tester.sendEventToBinding(testPointer.scroll(Offset.zero));
 
     expect(tester.takeException(), null);

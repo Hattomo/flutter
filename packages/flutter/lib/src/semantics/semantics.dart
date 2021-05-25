@@ -388,10 +388,11 @@ class SemanticsData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<Rect>('rect', rect, showName: false));
-    properties.add(TransformProperty('transform', transform, showName: false, defaultValue: null));
-    properties.add(DoubleProperty('elevation', elevation, defaultValue: 0.0));
-    properties.add(DoubleProperty('thickness', thickness, defaultValue: 0.0));
+    properties
+      ..add(DiagnosticsProperty<Rect>('rect', rect, showName: false))
+      ..add(TransformProperty('transform', transform, showName: false, defaultValue: null))
+      ..add(DoubleProperty('elevation', elevation, defaultValue: 0.0))
+      ..add(DoubleProperty('thickness', thickness, defaultValue: 0.0));
     final List<String> actionSummary = <String>[
       for (final SemanticsAction action in SemanticsAction.values.values)
         if ((actions & action.index) != 0)
@@ -400,31 +401,34 @@ class SemanticsData with Diagnosticable {
     final List<String?> customSemanticsActionSummary = customSemanticsActionIds!
       .map<String?>((int actionId) => CustomSemanticsAction.getAction(actionId)!.label)
       .toList();
-    properties.add(IterableProperty<String>('actions', actionSummary, ifEmpty: null));
-    properties.add(IterableProperty<String?>('customActions', customSemanticsActionSummary, ifEmpty: null));
+    properties
+      ..add(IterableProperty<String>('actions', actionSummary, ifEmpty: null))
+      ..add(IterableProperty<String?>('customActions', customSemanticsActionSummary, ifEmpty: null));
 
     final List<String> flagSummary = <String>[
       for (final SemanticsFlag flag in SemanticsFlag.values.values)
         if ((flags & flag.index) != 0)
           describeEnum(flag),
     ];
-    properties.add(IterableProperty<String>('flags', flagSummary, ifEmpty: null));
-    properties.add(StringProperty('label', label, defaultValue: ''));
-    properties.add(StringProperty('value', value, defaultValue: ''));
-    properties.add(StringProperty('increasedValue', increasedValue, defaultValue: ''));
-    properties.add(StringProperty('decreasedValue', decreasedValue, defaultValue: ''));
-    properties.add(StringProperty('hint', hint, defaultValue: ''));
-    properties.add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null));
+    properties
+      ..add(IterableProperty<String>('flags', flagSummary, ifEmpty: null))
+      ..add(StringProperty('label', label, defaultValue: ''))
+      ..add(StringProperty('value', value, defaultValue: ''))
+      ..add(StringProperty('increasedValue', increasedValue, defaultValue: ''))
+      ..add(StringProperty('decreasedValue', decreasedValue, defaultValue: ''))
+      ..add(StringProperty('hint', hint, defaultValue: ''))
+      ..add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null));
     if (textSelection?.isValid == true)
       properties.add(MessageProperty('textSelection', '[${textSelection!.start}, ${textSelection!.end}]'));
-    properties.add(IntProperty('platformViewId', platformViewId, defaultValue: null));
-    properties.add(IntProperty('maxValueLength', maxValueLength, defaultValue: null));
-    properties.add(IntProperty('currentValueLength', currentValueLength, defaultValue: null));
-    properties.add(IntProperty('scrollChildren', scrollChildCount, defaultValue: null));
-    properties.add(IntProperty('scrollIndex', scrollIndex, defaultValue: null));
-    properties.add(DoubleProperty('scrollExtentMin', scrollExtentMin, defaultValue: null));
-    properties.add(DoubleProperty('scrollPosition', scrollPosition, defaultValue: null));
-    properties.add(DoubleProperty('scrollExtentMax', scrollExtentMax, defaultValue: null));
+    properties
+      ..add(IntProperty('platformViewId', platformViewId, defaultValue: null))
+      ..add(IntProperty('maxValueLength', maxValueLength, defaultValue: null))
+      ..add(IntProperty('currentValueLength', currentValueLength, defaultValue: null))
+      ..add(IntProperty('scrollChildren', scrollChildCount, defaultValue: null))
+      ..add(IntProperty('scrollIndex', scrollIndex, defaultValue: null))
+      ..add(DoubleProperty('scrollExtentMin', scrollExtentMin, defaultValue: null))
+      ..add(DoubleProperty('scrollPosition', scrollPosition, defaultValue: null))
+      ..add(DoubleProperty('scrollExtentMax', scrollExtentMax, defaultValue: null));
   }
 
   @override
@@ -572,8 +576,9 @@ class SemanticsHintOverrides extends DiagnosticableTree {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(StringProperty('onTapHint', onTapHint, defaultValue: null));
-    properties.add(StringProperty('onLongPressHint', onLongPressHint, defaultValue: null));
+    properties
+      ..add(StringProperty('onTapHint', onTapHint, defaultValue: null))
+      ..add(StringProperty('onLongPressHint', onLongPressHint, defaultValue: null));
   }
 }
 
@@ -1180,14 +1185,15 @@ class SemanticsProperties extends DiagnosticableTree {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<bool>('checked', checked, defaultValue: null));
-    properties.add(DiagnosticsProperty<bool>('selected', selected, defaultValue: null));
-    properties.add(StringProperty('label', label, defaultValue: ''));
-    properties.add(StringProperty('value', value));
-    properties.add(StringProperty('hint', hint));
-    properties.add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null));
-    properties.add(DiagnosticsProperty<SemanticsSortKey>('sortKey', sortKey, defaultValue: null));
-    properties.add(DiagnosticsProperty<SemanticsHintOverrides>('hintOverrides', hintOverrides));
+    properties
+      ..add(DiagnosticsProperty<bool>('checked', checked, defaultValue: null))
+      ..add(DiagnosticsProperty<bool>('selected', selected, defaultValue: null))
+      ..add(StringProperty('label', label, defaultValue: ''))
+      ..add(StringProperty('value', value))
+      ..add(StringProperty('hint', hint))
+      ..add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null))
+      ..add(DiagnosticsProperty<SemanticsSortKey>('sortKey', sortKey, defaultValue: null))
+      ..add(DiagnosticsProperty<SemanticsHintOverrides>('hintOverrides', hintOverrides));
   }
 
   @override
@@ -1417,9 +1423,10 @@ class SemanticsNode extends AbstractNode with DiagnosticableTreeMixin {
               if (mutationErrors.isNotEmpty) {
                 mutationErrors.add(ErrorSpacer());
               }
-              mutationErrors.add(ErrorDescription('Child node at position $i was replaced:'));
-              mutationErrors.add(newChildren[i].toDiagnosticsNode(name: 'Previous child', style: DiagnosticsTreeStyle.singleLine));
-              mutationErrors.add(_debugPreviousSnapshot[i].toDiagnosticsNode(name: 'New child', style: DiagnosticsTreeStyle.singleLine));
+              mutationErrors
+                ..add(ErrorDescription('Child node at position $i was replaced:'))
+                ..add(newChildren[i].toDiagnosticsNode(name: 'Previous child', style: DiagnosticsTreeStyle.singleLine))
+                ..add(_debugPreviousSnapshot[i].toDiagnosticsNode(name: 'New child', style: DiagnosticsTreeStyle.singleLine));
             }
           }
         }
@@ -2218,9 +2225,10 @@ class SemanticsNode extends AbstractNode with DiagnosticableTreeMixin {
       properties.add(FlagProperty('inDirtyNodes', value: inDirtyNodes, ifTrue: 'dirty', ifFalse: 'STALE'));
       hideOwner = inDirtyNodes;
     }
-    properties.add(DiagnosticsProperty<SemanticsOwner>('owner', owner, level: hideOwner ? DiagnosticLevel.hidden : DiagnosticLevel.info));
-    properties.add(FlagProperty('isMergedIntoParent', value: isMergedIntoParent, ifTrue: 'merged up ⬆️'));
-    properties.add(FlagProperty('mergeAllDescendantsIntoThisNode', value: mergeAllDescendantsIntoThisNode, ifTrue: 'merge boundary ⛔️'));
+    properties
+      ..add(DiagnosticsProperty<SemanticsOwner>('owner', owner, level: hideOwner ? DiagnosticLevel.hidden : DiagnosticLevel.info))
+      ..add(FlagProperty('isMergedIntoParent', value: isMergedIntoParent, ifTrue: 'merged up ⬆️'))
+      ..add(FlagProperty('mergeAllDescendantsIntoThisNode', value: mergeAllDescendantsIntoThisNode, ifTrue: 'merge boundary ⛔️'));
     final Offset? offset = transform != null ? MatrixUtils.getAsTranslation(transform!) : null;
     if (offset != null) {
       properties.add(DiagnosticsProperty<Rect>('rect', rect.shift(offset), showName: false));
@@ -2240,31 +2248,34 @@ class SemanticsNode extends AbstractNode with DiagnosticableTreeMixin {
     final List<String?> customSemanticsActions = _customSemanticsActions.keys
       .map<String?>((CustomSemanticsAction action) => action.label)
       .toList();
-    properties.add(IterableProperty<String>('actions', actions, ifEmpty: null));
-    properties.add(IterableProperty<String?>('customActions', customSemanticsActions, ifEmpty: null));
+    properties
+      ..add(IterableProperty<String>('actions', actions, ifEmpty: null))
+      ..add(IterableProperty<String?>('customActions', customSemanticsActions, ifEmpty: null));
     final List<String> flags = SemanticsFlag.values.values.where((SemanticsFlag flag) => hasFlag(flag)).map((SemanticsFlag flag) => flag.toString().substring('SemanticsFlag.'.length)).toList();
-    properties.add(IterableProperty<String>('flags', flags, ifEmpty: null));
-    properties.add(FlagProperty('isInvisible', value: isInvisible, ifTrue: 'invisible'));
-    properties.add(FlagProperty('isHidden', value: hasFlag(SemanticsFlag.isHidden), ifTrue: 'HIDDEN'));
-    properties.add(StringProperty('label', _label, defaultValue: ''));
-    properties.add(StringProperty('value', _value, defaultValue: ''));
-    properties.add(StringProperty('increasedValue', _increasedValue, defaultValue: ''));
-    properties.add(StringProperty('decreasedValue', _decreasedValue, defaultValue: ''));
-    properties.add(StringProperty('hint', _hint, defaultValue: ''));
-    properties.add(EnumProperty<TextDirection>('textDirection', _textDirection, defaultValue: null));
-    properties.add(DiagnosticsProperty<SemanticsSortKey>('sortKey', sortKey, defaultValue: null));
+    properties
+      ..add(IterableProperty<String>('flags', flags, ifEmpty: null))
+      ..add(FlagProperty('isInvisible', value: isInvisible, ifTrue: 'invisible'))
+      ..add(FlagProperty('isHidden', value: hasFlag(SemanticsFlag.isHidden), ifTrue: 'HIDDEN'))
+      ..add(StringProperty('label', _label, defaultValue: ''))
+      ..add(StringProperty('value', _value, defaultValue: ''))
+      ..add(StringProperty('increasedValue', _increasedValue, defaultValue: ''))
+      ..add(StringProperty('decreasedValue', _decreasedValue, defaultValue: ''))
+      ..add(StringProperty('hint', _hint, defaultValue: ''))
+      ..add(EnumProperty<TextDirection>('textDirection', _textDirection, defaultValue: null))
+      ..add(DiagnosticsProperty<SemanticsSortKey>('sortKey', sortKey, defaultValue: null));
     if (_textSelection?.isValid == true)
       properties.add(MessageProperty('text selection', '[${_textSelection!.start}, ${_textSelection!.end}]'));
-    properties.add(IntProperty('platformViewId', platformViewId, defaultValue: null));
-    properties.add(IntProperty('maxValueLength', maxValueLength, defaultValue: null));
-    properties.add(IntProperty('currentValueLength', currentValueLength, defaultValue: null));
-    properties.add(IntProperty('scrollChildren', scrollChildCount, defaultValue: null));
-    properties.add(IntProperty('scrollIndex', scrollIndex, defaultValue: null));
-    properties.add(DoubleProperty('scrollExtentMin', scrollExtentMin, defaultValue: null));
-    properties.add(DoubleProperty('scrollPosition', scrollPosition, defaultValue: null));
-    properties.add(DoubleProperty('scrollExtentMax', scrollExtentMax, defaultValue: null));
-    properties.add(DoubleProperty('elevation', elevation, defaultValue: 0.0));
-    properties.add(DoubleProperty('thickness', thickness, defaultValue: 0.0));
+    properties
+      ..add(IntProperty('platformViewId', platformViewId, defaultValue: null))
+      ..add(IntProperty('maxValueLength', maxValueLength, defaultValue: null))
+      ..add(IntProperty('currentValueLength', currentValueLength, defaultValue: null))
+      ..add(IntProperty('scrollChildren', scrollChildCount, defaultValue: null))
+      ..add(IntProperty('scrollIndex', scrollIndex, defaultValue: null))
+      ..add(DoubleProperty('scrollExtentMin', scrollExtentMin, defaultValue: null))
+      ..add(DoubleProperty('scrollPosition', scrollPosition, defaultValue: null))
+      ..add(DoubleProperty('scrollExtentMax', scrollExtentMax, defaultValue: null))
+      ..add(DoubleProperty('elevation', elevation, defaultValue: 0.0))
+      ..add(DoubleProperty('thickness', thickness, defaultValue: 0.0));
   }
 
   /// Returns a string representation of this node and its descendants.
@@ -2396,12 +2407,13 @@ class _SemanticsSortGroup extends Comparable<_SemanticsSortGroup> {
     for (final SemanticsNode child in nodes) {
       // Using a small delta to shrink child rects removes overlapping cases.
       final Rect childRect = child.rect.deflate(0.1);
-      edges.add(_BoxEdge(
+      edges
+      ..add(_BoxEdge(
         isLeadingEdge: true,
         offset: _pointInParentCoordinates(child, childRect.topLeft).dx,
         node: child,
-      ));
-      edges.add(_BoxEdge(
+      ))
+      ..add(_BoxEdge(
         isLeadingEdge: false,
         offset: _pointInParentCoordinates(child, childRect.bottomRight).dx,
         node: child,
@@ -2540,12 +2552,13 @@ List<SemanticsNode> _childrenInDefaultOrder(List<SemanticsNode> children, TextDi
     assert(child.rect.isFinite);
     // Using a small delta to shrink child rects removes overlapping cases.
     final Rect childRect = child.rect.deflate(0.1);
-    edges.add(_BoxEdge(
+    edges
+    ..add(_BoxEdge(
       isLeadingEdge: true,
       offset: _pointInParentCoordinates(child, childRect.topLeft).dy,
       node: child,
-    ));
-    edges.add(_BoxEdge(
+    ))
+    ..add(_BoxEdge(
       isLeadingEdge: false,
       offset: _pointInParentCoordinates(child, childRect.bottomRight).dy,
       node: child,

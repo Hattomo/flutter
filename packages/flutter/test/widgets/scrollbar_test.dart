@@ -88,9 +88,9 @@ void main() {
         minLength: minLen,
         minOverscrollLength: minLen,
         scrollMetrics: metrics,
-      );
+      )
 
-      painter.paint(testCanvas, size);
+      ..paint(testCanvas, size);
 
       final Rect rect0 = captureRect();
       expect(rect0.top, 0);
@@ -101,9 +101,9 @@ void main() {
       // When scroll normally.
       const double newPixels = 1.0;
 
-      painter.update(metrics.copyWith(pixels: newPixels), metrics.axisDirection);
-
-      painter.paint(testCanvas, size);
+      painter
+        ..update(metrics.copyWith(pixels: newPixels), metrics.axisDirection)
+        ..paint(testCanvas, size);
 
       final Rect rect1 = captureRect();
       expect(rect1.left, size.width - _kThickness);
@@ -142,8 +142,9 @@ void main() {
 
       late double lastCoefficient;
       for (final ScrollMetrics metrics in metricsList) {
-        painter.update(metrics, metrics.axisDirection);
-        painter.paint(testCanvas, size);
+        painter
+          ..update(metrics, metrics.axisDirection)
+          ..paint(testCanvas, size);
 
         final Rect rect = captureRect();
         final double newCoefficient = metrics.pixels/rect.top;
@@ -177,24 +178,24 @@ void main() {
           mainAxisMargin: margin,
           minLength: minLen,
           scrollMetrics: defaultMetrics,
-        );
+        )
 
         // Overscroll to double.negativeInfinity (top).
-        painter.update(
+        ..update(
           startingMetrics.copyWith(pixels: double.negativeInfinity),
           startingMetrics.axisDirection,
-        );
+        )
 
-        painter.paint(testCanvas, size);
+        ..paint(testCanvas, size);
         expect(captureRect().top, margin);
 
         // Overscroll to double.infinity (down).
-        painter.update(
+        painter
+          ..update(
           startingMetrics.copyWith(pixels: double.infinity),
           startingMetrics.axisDirection,
-        );
-
-        painter.paint(testCanvas, size);
+        )
+        ..paint(testCanvas, size);
         expect(size.height - captureRect().bottom, margin);
       }
     },
@@ -220,12 +221,13 @@ void main() {
         );
 
         for (final AxisDirection direction in AxisDirection.values) {
-          painter.update(
+          painter
+          ..update(
             startingMetrics.copyWith(axisDirection: direction),
             direction,
-          );
+          )
 
-          painter.paint(testCanvas, size);
+          ..paint(testCanvas, size);
           final Rect rect = captureRect();
 
           switch (direction) {
@@ -263,126 +265,134 @@ void main() {
     );
 
     testWidgets('down', (WidgetTester tester) async {
-      p.update(
+      p
+      ..update(
         metrics.copyWith(
           viewportDimension: size.height,
           pixels: double.negativeInfinity,
         ),
         AxisDirection.down,
-      );
+      )
 
       // Top overscroll.
-      p.paint(testCanvas, size);
+      ..paint(testCanvas, size);
       final Rect rect0 = captureRect();
       expect(rect0.top, padding.top);
       expect(size.width - rect0.right, padding.right);
 
       // Bottom overscroll.
-      p.update(
+      p
+      ..update(
         metrics.copyWith(
           viewportDimension: size.height,
           pixels: double.infinity,
         ),
         AxisDirection.down,
-      );
+      )
 
-      p.paint(testCanvas, size);
+      ..paint(testCanvas, size);
       final Rect rect1 = captureRect();
       expect(size.height - rect1.bottom, padding.bottom);
       expect(size.width - rect1.right, padding.right);
     });
 
     testWidgets('up', (WidgetTester tester) async {
-      p.update(
+      p
+      ..update(
         metrics.copyWith(
           viewportDimension: size.height,
           pixels: double.infinity,
           axisDirection: AxisDirection.up,
         ),
         AxisDirection.up,
-      );
+      )
 
       // Top overscroll.
-      p.paint(testCanvas, size);
+      ..paint(testCanvas, size);
       final Rect rect0 = captureRect();
       expect(rect0.top, padding.top);
       expect(size.width - rect0.right, padding.right);
 
       // Bottom overscroll.
-      p.update(
+      p
+      ..update(
         metrics.copyWith(
           viewportDimension: size.height,
           pixels: double.negativeInfinity,
           axisDirection: AxisDirection.up,
         ),
         AxisDirection.up,
-      );
+      )
 
-      p.paint(testCanvas, size);
+      ..paint(testCanvas, size);
       final Rect rect1 = captureRect();
       expect(size.height - rect1.bottom, padding.bottom);
       expect(size.width - rect1.right, padding.right);
     });
 
     testWidgets('left', (WidgetTester tester) async {
-      p.update(
+      p
+      ..update(
         metrics.copyWith(
           viewportDimension: size.width,
           pixels: double.negativeInfinity,
           axisDirection: AxisDirection.left,
         ),
         AxisDirection.left,
-      );
+      )
 
       // Right overscroll.
-      p.paint(testCanvas, size);
+      ..paint(testCanvas, size);
       final Rect rect0 = captureRect();
       expect(size.height - rect0.bottom, padding.bottom);
       expect(size.width - rect0.right, padding.right);
 
       // Left overscroll.
-      p.update(
+      p
+      ..update(
         metrics.copyWith(
           viewportDimension: size.width,
           pixels: double.infinity,
           axisDirection: AxisDirection.left,
         ),
         AxisDirection.left,
-      );
+      )
 
-      p.paint(testCanvas, size);
+      ..paint(testCanvas, size);
       final Rect rect1 = captureRect();
       expect(size.height - rect1.bottom, padding.bottom);
       expect(rect1.left, padding.left);
     });
 
     testWidgets('right', (WidgetTester tester) async {
-      p.update(
+      p
+      ..update(
         metrics.copyWith(
           viewportDimension: size.width,
           pixels: double.infinity,
           axisDirection: AxisDirection.right,
         ),
         AxisDirection.right,
-      );
+      )
 
       // Right overscroll.
-      p.paint(testCanvas, size);
+      ..paint(testCanvas, size);
       final Rect rect0 = captureRect();
       expect(size.height - rect0.bottom, padding.bottom);
       expect(size.width - rect0.right, padding.right);
 
       // Left overscroll.
-      p.update(
+      p
+      ..update(
         metrics.copyWith(
           viewportDimension: size.width,
           pixels: double.negativeInfinity,
           axisDirection: AxisDirection.right,
         ),
         AxisDirection.right,
-      );
+      )
 
-      p.paint(testCanvas, size);
+      ..paint(testCanvas, size);
       final Rect rect1 = captureRect();
       expect(size.height - rect1.bottom, padding.bottom);
       expect(rect1.left, padding.left);
@@ -406,57 +416,61 @@ void main() {
       scrollMetrics: metrics,
       minLength: 36.0,
       minOverscrollLength: 8.0,
-    );
+    )
 
     // No overscroll gives a full sized thumb.
-    p.update(
+    ..update(
       metrics.copyWith(
         pixels: 0.0,
       ),
       AxisDirection.down,
-    );
-    p.paint(testCanvas, size);
+    )
+    ..paint(testCanvas, size);
     final double fullThumbExtent = captureRect().height;
     expect(fullThumbExtent, greaterThan(_kMinThumbExtent));
 
     // Scrolling to the middle also gives a full sized thumb.
-    p.update(
+    p
+    ..update(
       metrics.copyWith(
         pixels: scrollExtent / 2,
       ),
       AxisDirection.down,
-    );
-    p.paint(testCanvas, size);
+    )
+    ..paint(testCanvas, size);
     expect(captureRect().height, moreOrLessEquals(fullThumbExtent, epsilon: 1e-6));
 
     // Scrolling just to the very end also gives a full sized thumb.
-    p.update(
+    p
+    ..update(
       metrics.copyWith(
         pixels: scrollExtent,
       ),
       AxisDirection.down,
-    );
-    p.paint(testCanvas, size);
+    )
+    ..paint(testCanvas, size);
     expect(captureRect().height, moreOrLessEquals(fullThumbExtent, epsilon: 1e-6));
 
     // Scrolling just past the end shrinks the thumb slightly.
-    p.update(
+    p
+    ..update(
       metrics.copyWith(
         pixels: scrollExtent * 1.001,
       ),
       AxisDirection.down,
-    );
-    p.paint(testCanvas, size);
+    )
+    ..paint(testCanvas, size);
     expect(captureRect().height, moreOrLessEquals(fullThumbExtent, epsilon: 2.0));
 
     // Scrolling way past the end shrinks the thumb to minimum.
-    p.update(
+    p
+    ..update(
       metrics.copyWith(
         pixels: double.infinity,
       ),
       AxisDirection.down,
-    );
-    p.paint(testCanvas, size);
+    )
+    ..paint(testCanvas, size);
     expect(captureRect().height, minOverscrollLength);
   });
 
@@ -490,8 +504,9 @@ void main() {
         Rect? previousRect;
 
         for (final ScrollMetrics metrics in metricsList) {
-          painter.update(metrics, metrics.axisDirection);
-          painter.paint(testCanvas, size);
+          painter
+            ..update(metrics, metrics.axisDirection)
+            ..paint(testCanvas, size);
           final Rect rect = captureRect();
           if (previousRect != null) {
             if (rect.height == size.height) {
@@ -679,9 +694,9 @@ void main() {
       ),
     );
 
-    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse);
+    final TestPointer testPointer = TestPointer(1, ui.PointerDeviceKind.mouse)
     // Hover over the thumb to prevent the scrollbar from fading out.
-    testPointer.hover(const Offset(790.0, 5.0));
+      ..hover(const Offset(790.0, 5.0));
     await gesture.up();
     await tester.pump(const Duration(seconds: 3));
 
@@ -1138,8 +1153,8 @@ void main() {
     );
 
     // Execute a pointer scroll while dragging (drag gesture has not come up yet)
-    final TestPointer pointer = TestPointer(1, ui.PointerDeviceKind.mouse);
-    pointer.hover(const Offset(798.0, 15.0));
+    final TestPointer pointer = TestPointer(1, ui.PointerDeviceKind.mouse)
+      ..hover(const Offset(798.0, 15.0));
     await tester.sendEventToBinding(pointer.scroll(const Offset(0.0, 20.0)));
     await tester.pumpAndSettle();
     // Scrolling while holding the drag on the scrollbar and still hovered over

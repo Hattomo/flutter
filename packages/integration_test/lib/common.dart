@@ -76,9 +76,10 @@ class Response {
     final StringBuffer sb = StringBuffer();
     int failureCount = 1;
     for (final Failure failure in failureDetails) {
-      sb.writeln('Failure in method: ${failure.methodName}');
-      sb.writeln(failure.details);
-      sb.writeln('end of failure ${failureCount.toString()}\n\n');
+      sb
+        ..writeln('Failure in method: ${failure.methodName}')
+        ..writeln(failure.details)
+        ..writeln('end of failure ${failureCount.toString()}\n\n');
       failureCount++;
     }
     return sb.toString();

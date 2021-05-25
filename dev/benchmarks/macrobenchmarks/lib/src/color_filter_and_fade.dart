@@ -162,13 +162,14 @@ class _ShadowPainter extends CustomPainter {
       paint.colorFilter = ColorFilter.mode(shadow.color, BlendMode.srcIn);
     }
 
-    canvas.saveLayer(null, paint);
-    canvas.translate(shadow.offset.dx, shadow.offset.dy);
-    canvas.drawRect(rect, Paint());
-    canvas.drawRect(rect, Paint()..maskFilter = MaskFilter.blur(BlurStyle.normal, shadow.blurSigma));
-    canvas.restore();
+    canvas
+      ..saveLayer(null, paint)
+      ..translate(shadow.offset.dx, shadow.offset.dy)
+      ..drawRect(rect, Paint())
+      ..drawRect(rect, Paint()..maskFilter = MaskFilter.blur(BlurStyle.normal, shadow.blurSigma))
+      ..restore()
 
-    canvas.drawRect(rect, Paint()..color = useColorFilter ? Colors.white : Colors.black);
+      ..drawRect(rect, Paint()..color = useColorFilter ? Colors.white : Colors.black);
   }
 
   @override

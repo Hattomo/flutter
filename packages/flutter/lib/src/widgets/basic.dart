@@ -294,8 +294,9 @@ class Opacity extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DoubleProperty('opacity', opacity));
-    properties.add(FlagProperty('alwaysIncludeSemantics', value: alwaysIncludeSemantics, ifTrue: 'alwaysIncludeSemantics'));
+    properties
+      ..add(DoubleProperty('opacity', opacity))
+      ..add(FlagProperty('alwaysIncludeSemantics', value: alwaysIncludeSemantics, ifTrue: 'alwaysIncludeSemantics'));
   }
 }
 
@@ -765,8 +766,9 @@ class ClipRRect extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<BorderRadius>('borderRadius', borderRadius, showName: false, defaultValue: null));
-    properties.add(DiagnosticsProperty<CustomClipper<RRect>>('clipper', clipper, defaultValue: null));
+    properties
+      ..add(DiagnosticsProperty<BorderRadius>('borderRadius', borderRadius, showName: false, defaultValue: null))
+      ..add(DiagnosticsProperty<CustomClipper<RRect>>('clipper', clipper, defaultValue: null));
   }
 }
 
@@ -1030,11 +1032,12 @@ class PhysicalModel extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(EnumProperty<BoxShape>('shape', shape));
-    properties.add(DiagnosticsProperty<BorderRadius>('borderRadius', borderRadius));
-    properties.add(DoubleProperty('elevation', elevation));
-    properties.add(ColorProperty('color', color));
-    properties.add(ColorProperty('shadowColor', shadowColor));
+    properties
+      ..add(EnumProperty<BoxShape>('shape', shape))
+      ..add(DiagnosticsProperty<BorderRadius>('borderRadius', borderRadius))
+      ..add(DoubleProperty('elevation', elevation))
+      ..add(ColorProperty('color', color))
+      ..add(ColorProperty('shadowColor', shadowColor));
   }
 }
 
@@ -1120,10 +1123,11 @@ class PhysicalShape extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<CustomClipper<Path>>('clipper', clipper));
-    properties.add(DoubleProperty('elevation', elevation));
-    properties.add(ColorProperty('color', color));
-    properties.add(ColorProperty('shadowColor', shadowColor));
+    properties
+      ..add(DiagnosticsProperty<CustomClipper<Path>>('clipper', clipper))
+      ..add(DoubleProperty('elevation', elevation))
+      ..add(ColorProperty('color', color))
+      ..add(ColorProperty('shadowColor', shadowColor));
   }
 }
 
@@ -1595,8 +1599,9 @@ class FittedBox extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(EnumProperty<BoxFit>('fit', fit));
-    properties.add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
+    properties
+      ..add(EnumProperty<BoxFit>('fit', fit))
+      ..add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
   }
 }
 
@@ -1983,9 +1988,10 @@ class Align extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
-    properties.add(DoubleProperty('widthFactor', widthFactor, defaultValue: null));
-    properties.add(DoubleProperty('heightFactor', heightFactor, defaultValue: null));
+    properties
+      ..add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment))
+      ..add(DoubleProperty('widthFactor', widthFactor, defaultValue: null))
+      ..add(DoubleProperty('heightFactor', heightFactor, defaultValue: null));
   }
 }
 
@@ -2275,8 +2281,9 @@ class SizedBox extends SingleChildRenderObjectWidget {
     } else {
       level = DiagnosticLevel.info;
     }
-    properties.add(DoubleProperty('width', width, defaultValue: null, level: level));
-    properties.add(DoubleProperty('height', height, defaultValue: null, level: level));
+    properties
+      ..add(DoubleProperty('width', width, defaultValue: null, level: level))
+      ..add(DoubleProperty('height', height, defaultValue: null, level: level));
   }
 }
 
@@ -2549,8 +2556,9 @@ class ConstraintsTransformBox extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
-    properties.add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null));
+    properties
+      ..add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment))
+      ..add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null));
 
     final String? debugTransformLabel = _debugTransformLabel.isNotEmpty
       ? _debugTransformLabel
@@ -2664,9 +2672,10 @@ class UnconstrainedBox extends StatelessWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
-    properties.add(EnumProperty<Axis>('constrainedAxis', constrainedAxis, defaultValue: null));
-    properties.add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null));
+    properties
+      ..add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment))
+      ..add(EnumProperty<Axis>('constrainedAxis', constrainedAxis, defaultValue: null))
+      ..add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null));
   }
 }
 
@@ -2787,9 +2796,10 @@ class FractionallySizedBox extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
-    properties.add(DoubleProperty('widthFactor', widthFactor, defaultValue: null));
-    properties.add(DoubleProperty('heightFactor', heightFactor, defaultValue: null));
+    properties
+      ..add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment))
+      ..add(DoubleProperty('widthFactor', widthFactor, defaultValue: null))
+      ..add(DoubleProperty('heightFactor', heightFactor, defaultValue: null));
   }
 }
 
@@ -2858,8 +2868,9 @@ class LimitedBox extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DoubleProperty('maxWidth', maxWidth, defaultValue: double.infinity));
-    properties.add(DoubleProperty('maxHeight', maxHeight, defaultValue: double.infinity));
+    properties
+      ..add(DoubleProperty('maxWidth', maxWidth, defaultValue: double.infinity))
+      ..add(DoubleProperty('maxHeight', maxHeight, defaultValue: double.infinity));
   }
 }
 
@@ -2952,11 +2963,12 @@ class OverflowBox extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
-    properties.add(DoubleProperty('minWidth', minWidth, defaultValue: null));
-    properties.add(DoubleProperty('maxWidth', maxWidth, defaultValue: null));
-    properties.add(DoubleProperty('minHeight', minHeight, defaultValue: null));
-    properties.add(DoubleProperty('maxHeight', maxHeight, defaultValue: null));
+    properties
+      ..add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment))
+      ..add(DoubleProperty('minWidth', minWidth, defaultValue: null))
+      ..add(DoubleProperty('maxWidth', maxWidth, defaultValue: null))
+      ..add(DoubleProperty('minHeight', minHeight, defaultValue: null))
+      ..add(DoubleProperty('maxHeight', maxHeight, defaultValue: null));
   }
 }
 
@@ -3029,8 +3041,9 @@ class SizedOverflowBox extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
-    properties.add(DiagnosticsProperty<Size>('size', size, defaultValue: null));
+    properties
+      ..add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment))
+      ..add(DiagnosticsProperty<Size>('size', size, defaultValue: null));
   }
 }
 
@@ -3884,10 +3897,11 @@ class Stack extends MultiChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment));
-    properties.add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null));
-    properties.add(EnumProperty<StackFit>('fit', fit));
-    properties.add(EnumProperty<Clip>('clipBehavior', clipBehavior, defaultValue: Clip.hardEdge));
+    properties
+      ..add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment))
+      ..add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null))
+      ..add(EnumProperty<StackFit>('fit', fit))
+      ..add(EnumProperty<Clip>('clipBehavior', clipBehavior, defaultValue: Clip.hardEdge));
   }
 }
 
@@ -4204,12 +4218,13 @@ class Positioned extends ParentDataWidget<StackParentData> {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DoubleProperty('left', left, defaultValue: null));
-    properties.add(DoubleProperty('top', top, defaultValue: null));
-    properties.add(DoubleProperty('right', right, defaultValue: null));
-    properties.add(DoubleProperty('bottom', bottom, defaultValue: null));
-    properties.add(DoubleProperty('width', width, defaultValue: null));
-    properties.add(DoubleProperty('height', height, defaultValue: null));
+    properties
+      ..add(DoubleProperty('left', left, defaultValue: null))
+      ..add(DoubleProperty('top', top, defaultValue: null))
+      ..add(DoubleProperty('right', right, defaultValue: null))
+      ..add(DoubleProperty('bottom', bottom, defaultValue: null))
+      ..add(DoubleProperty('width', width, defaultValue: null))
+      ..add(DoubleProperty('height', height, defaultValue: null));
   }
 }
 
@@ -4583,13 +4598,14 @@ class Flex extends MultiChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(EnumProperty<Axis>('direction', direction));
-    properties.add(EnumProperty<MainAxisAlignment>('mainAxisAlignment', mainAxisAlignment));
-    properties.add(EnumProperty<MainAxisSize>('mainAxisSize', mainAxisSize, defaultValue: MainAxisSize.max));
-    properties.add(EnumProperty<CrossAxisAlignment>('crossAxisAlignment', crossAxisAlignment));
-    properties.add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null));
-    properties.add(EnumProperty<VerticalDirection>('verticalDirection', verticalDirection, defaultValue: VerticalDirection.down));
-    properties.add(EnumProperty<TextBaseline>('textBaseline', textBaseline, defaultValue: null));
+    properties
+      ..add(EnumProperty<Axis>('direction', direction))
+      ..add(EnumProperty<MainAxisAlignment>('mainAxisAlignment', mainAxisAlignment))
+      ..add(EnumProperty<MainAxisSize>('mainAxisSize', mainAxisSize, defaultValue: MainAxisSize.max))
+      ..add(EnumProperty<CrossAxisAlignment>('crossAxisAlignment', crossAxisAlignment))
+      ..add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null))
+      ..add(EnumProperty<VerticalDirection>('verticalDirection', verticalDirection, defaultValue: VerticalDirection.down))
+      ..add(EnumProperty<TextBaseline>('textBaseline', textBaseline, defaultValue: null));
   }
 }
 
@@ -5443,14 +5459,15 @@ class Wrap extends MultiChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(EnumProperty<Axis>('direction', direction));
-    properties.add(EnumProperty<WrapAlignment>('alignment', alignment));
-    properties.add(DoubleProperty('spacing', spacing));
-    properties.add(EnumProperty<WrapAlignment>('runAlignment', runAlignment));
-    properties.add(DoubleProperty('runSpacing', runSpacing));
-    properties.add(DoubleProperty('crossAxisAlignment', runSpacing));
-    properties.add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null));
-    properties.add(EnumProperty<VerticalDirection>('verticalDirection', verticalDirection, defaultValue: VerticalDirection.down));
+    properties
+      ..add(EnumProperty<Axis>('direction', direction))
+      ..add(EnumProperty<WrapAlignment>('alignment', alignment))
+      ..add(DoubleProperty('spacing', spacing))
+      ..add(EnumProperty<WrapAlignment>('runAlignment', runAlignment))
+      ..add(DoubleProperty('runSpacing', runSpacing))
+      ..add(DoubleProperty('crossAxisAlignment', runSpacing))
+      ..add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null))
+      ..add(EnumProperty<VerticalDirection>('verticalDirection', verticalDirection, defaultValue: VerticalDirection.down));
   }
 }
 
@@ -5658,8 +5675,9 @@ class Flow extends MultiChildRenderObjectWidget {
 
   @override
   void updateRenderObject(BuildContext context, RenderFlow renderObject) {
-    renderObject.delegate = delegate;
-    renderObject.clipBehavior = clipBehavior;
+    renderObject
+      ..delegate = delegate
+      ..clipBehavior = clipBehavior;
   }
 }
 
@@ -5863,17 +5881,18 @@ class RichText extends MultiChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(EnumProperty<TextAlign>('textAlign', textAlign, defaultValue: TextAlign.start));
-    properties.add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null));
-    properties.add(FlagProperty('softWrap', value: softWrap, ifTrue: 'wrapping at box width', ifFalse: 'no wrapping except at line break characters', showName: true));
-    properties.add(EnumProperty<TextOverflow>('overflow', overflow, defaultValue: TextOverflow.clip));
-    properties.add(DoubleProperty('textScaleFactor', textScaleFactor, defaultValue: 1.0));
-    properties.add(IntProperty('maxLines', maxLines, ifNull: 'unlimited'));
-    properties.add(EnumProperty<TextWidthBasis>('textWidthBasis', textWidthBasis, defaultValue: TextWidthBasis.parent));
-    properties.add(StringProperty('text', text.toPlainText()));
-    properties.add(DiagnosticsProperty<Locale>('locale', locale, defaultValue: null));
-    properties.add(DiagnosticsProperty<StrutStyle>('strutStyle', strutStyle, defaultValue: null));
-    properties.add(DiagnosticsProperty<TextHeightBehavior>('textHeightBehavior', textHeightBehavior, defaultValue: null));
+    properties
+      ..add(EnumProperty<TextAlign>('textAlign', textAlign, defaultValue: TextAlign.start))
+      ..add(EnumProperty<TextDirection>('textDirection', textDirection, defaultValue: null))
+      ..add(FlagProperty('softWrap', value: softWrap, ifTrue: 'wrapping at box width', ifFalse: 'no wrapping except at line break characters', showName: true))
+      ..add(EnumProperty<TextOverflow>('overflow', overflow, defaultValue: TextOverflow.clip))
+      ..add(DoubleProperty('textScaleFactor', textScaleFactor, defaultValue: 1.0))
+      ..add(IntProperty('maxLines', maxLines, ifNull: 'unlimited'))
+      ..add(EnumProperty<TextWidthBasis>('textWidthBasis', textWidthBasis, defaultValue: TextWidthBasis.parent))
+      ..add(StringProperty('text', text.toPlainText()))
+      ..add(DiagnosticsProperty<Locale>('locale', locale, defaultValue: null))
+      ..add(DiagnosticsProperty<StrutStyle>('strutStyle', strutStyle, defaultValue: null))
+      ..add(DiagnosticsProperty<TextHeightBehavior>('textHeightBehavior', textHeightBehavior, defaultValue: null));
   }
 }
 
@@ -6102,19 +6121,20 @@ class RawImage extends LeafRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ui.Image>('image', image));
-    properties.add(DoubleProperty('width', width, defaultValue: null));
-    properties.add(DoubleProperty('height', height, defaultValue: null));
-    properties.add(DoubleProperty('scale', scale, defaultValue: 1.0));
-    properties.add(ColorProperty('color', color, defaultValue: null));
-    properties.add(EnumProperty<BlendMode>('colorBlendMode', colorBlendMode, defaultValue: null));
-    properties.add(EnumProperty<BoxFit>('fit', fit, defaultValue: null));
-    properties.add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment, defaultValue: null));
-    properties.add(EnumProperty<ImageRepeat>('repeat', repeat, defaultValue: ImageRepeat.noRepeat));
-    properties.add(DiagnosticsProperty<Rect>('centerSlice', centerSlice, defaultValue: null));
-    properties.add(FlagProperty('matchTextDirection', value: matchTextDirection, ifTrue: 'match text direction'));
-    properties.add(DiagnosticsProperty<bool>('invertColors', invertColors));
-    properties.add(EnumProperty<FilterQuality>('filterQuality', filterQuality));
+    properties
+      ..add(DiagnosticsProperty<ui.Image>('image', image))
+      ..add(DoubleProperty('width', width, defaultValue: null))
+      ..add(DoubleProperty('height', height, defaultValue: null))
+      ..add(DoubleProperty('scale', scale, defaultValue: 1.0))
+      ..add(ColorProperty('color', color, defaultValue: null))
+      ..add(EnumProperty<BlendMode>('colorBlendMode', colorBlendMode, defaultValue: null))
+      ..add(EnumProperty<BoxFit>('fit', fit, defaultValue: null))
+      ..add(DiagnosticsProperty<AlignmentGeometry>('alignment', alignment, defaultValue: null))
+      ..add(EnumProperty<ImageRepeat>('repeat', repeat, defaultValue: ImageRepeat.noRepeat))
+      ..add(DiagnosticsProperty<Rect>('centerSlice', centerSlice, defaultValue: null))
+      ..add(FlagProperty('matchTextDirection', value: matchTextDirection, ifTrue: 'match text direction'))
+      ..add(DiagnosticsProperty<bool>('invertColors', invertColors))
+      ..add(EnumProperty<FilterQuality>('filterQuality', filterQuality));
   }
 }
 
@@ -6408,8 +6428,9 @@ class Listener extends SingleChildRenderObjectWidget {
       if (onPointerCancel != null) 'cancel',
       if (onPointerSignal != null) 'signal',
     ];
-    properties.add(IterableProperty<String>('listeners', listeners, ifEmpty: '<none>'));
-    properties.add(EnumProperty<HitTestBehavior>('behavior', behavior));
+    properties
+      ..add(IterableProperty<String>('listeners', listeners, ifEmpty: '<none>'))
+      ..add(EnumProperty<HitTestBehavior>('behavior', behavior));
   }
 }
 
@@ -6776,9 +6797,10 @@ class MouseRegion extends StatefulWidget {
       listeners.add('exit');
     if (onHover != null)
       listeners.add('hover');
-    properties.add(IterableProperty<String>('listeners', listeners, ifEmpty: '<none>'));
-    properties.add(DiagnosticsProperty<MouseCursor>('cursor', cursor, defaultValue: null));
-    properties.add(DiagnosticsProperty<bool>('opaque', opaque, defaultValue: true));
+    properties
+      ..add(IterableProperty<String>('listeners', listeners, ifEmpty: '<none>'))
+      ..add(DiagnosticsProperty<MouseCursor>('cursor', cursor, defaultValue: null))
+      ..add(DiagnosticsProperty<bool>('opaque', opaque, defaultValue: true));
   }
 }
 
@@ -7015,8 +7037,9 @@ class IgnorePointer extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<bool>('ignoring', ignoring));
-    properties.add(DiagnosticsProperty<bool>('ignoringSemantics', ignoringSemantics, defaultValue: null));
+    properties
+      ..add(DiagnosticsProperty<bool>('ignoring', ignoring))
+      ..add(DiagnosticsProperty<bool>('ignoringSemantics', ignoringSemantics, defaultValue: null));
   }
 }
 
@@ -7117,8 +7140,9 @@ class AbsorbPointer extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<bool>('absorbing', absorbing));
-    properties.add(DiagnosticsProperty<bool>('ignoringSemantics', ignoringSemantics, defaultValue: null));
+    properties
+      ..add(DiagnosticsProperty<bool>('absorbing', absorbing))
+      ..add(DiagnosticsProperty<bool>('ignoringSemantics', ignoringSemantics, defaultValue: null));
   }
 }
 
@@ -7163,8 +7187,9 @@ class MetaData extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(EnumProperty<HitTestBehavior>('behavior', behavior));
-    properties.add(DiagnosticsProperty<dynamic>('metaData', metaData));
+    properties
+      ..add(EnumProperty<HitTestBehavior>('behavior', behavior))
+      ..add(DiagnosticsProperty<dynamic>('metaData', metaData));
   }
 }
 
@@ -7519,8 +7544,9 @@ class Semantics extends SingleChildRenderObjectWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<bool>('container', container));
-    properties.add(DiagnosticsProperty<SemanticsProperties>('properties', this.properties));
+    properties
+      ..add(DiagnosticsProperty<bool>('container', container))
+      ..add(DiagnosticsProperty<SemanticsProperties>('properties', this.properties));
     this.properties.debugFillProperties(properties);
   }
 }

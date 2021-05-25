@@ -84,8 +84,9 @@ void main() {
       const String addr = '192.168.1.1';
       runner = SshCommandRunner.withProcessManager(fakeProcessManager,
           address: addr);
-      fakeProcessResult.stdout = 'whatever';
-      fakeProcessResult.exitCode = 1;
+      fakeProcessResult
+        ..stdout = 'whatever'
+        ..exitCode = 1;
       Future<void> failingFunction() async {
         await runner.run('oihaw');
       }

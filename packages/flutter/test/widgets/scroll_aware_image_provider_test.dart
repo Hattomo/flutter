@@ -307,8 +307,8 @@ void main() {
     expect(testImageProvider.configuration, null);
     expect(imageCache!.containsKey(testImageProvider), false);
 
-    final ControllablePhysics physics = _findPhysics<ControllablePhysics>(tester);
-    physics.recommendDeferredLoadingValue = true;
+    final ControllablePhysics physics = _findPhysics<ControllablePhysics>(tester)
+      ..recommendDeferredLoadingValue = true;
 
     final ImageStream stream = imageProvider.resolve(ImageConfiguration.empty);
 
@@ -358,8 +358,8 @@ void main() {
     expect(testImageProvider.configuration, null);
     expect(imageCache!.containsKey(testImageProvider), false);
 
-    final ControllablePhysics physics = _findPhysics<ControllablePhysics>(tester);
-    physics.recommendDeferredLoadingValue = true;
+    final ControllablePhysics physics = _findPhysics<ControllablePhysics>(tester)
+      ..recommendDeferredLoadingValue = true;
 
     final ImageStream stream = imageProvider.resolve(ImageConfiguration.empty);
 
@@ -368,8 +368,8 @@ void main() {
     expect(imageCache!.currentSize, 0);
 
     // Occupy the only slot in the cache with another image.
-    final TestImageProvider testImageProvider2 = TestImageProvider(testImage);
-    testImageProvider2.complete();
+    final TestImageProvider testImageProvider2 = TestImageProvider(testImage)
+      ..complete();
     await precacheImage(testImageProvider2, context.context!);
     expect(imageCache!.containsKey(testImageProvider), false);
     expect(imageCache!.containsKey(testImageProvider2), true);

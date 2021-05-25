@@ -163,8 +163,8 @@ class RenderRepaintBoundaryWithDebugPaint extends RenderRepaintBoundary {
       {
         final PictureLayer pictureLayer = PictureLayer(Offset.zero & size);
         final ui.PictureRecorder recorder = ui.PictureRecorder();
-        final Canvas pictureCanvas = Canvas(recorder);
-        pictureCanvas.drawCircle(Offset.zero, 20.0, paint);
+        final Canvas pictureCanvas = Canvas(recorder)
+          ..drawCircle(Offset.zero, 20.0, paint);
         pictureLayer.picture = recorder.endRecording();
         context.addLayer(
           OffsetLayer()
@@ -618,9 +618,9 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
         ),
       );
 
-      final InspectorSelection selection = getInspectorState().selection as InspectorSelection;
+      final InspectorSelection selection = getInspectorState().selection as InspectorSelection
       // The selection is static, so it may be initialized from previous tests.
-      selection.clear();
+        ..clear();
 
       await tester.tap(find.text('Child 1'), warnIfMissed: false);
       await tester.pump();
@@ -646,8 +646,9 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       final String? aId = service.toId(a, group1);
       expect(service.toId(a, group2), equals(aId));
       expect(service.toId(a, group3), equals(aId));
-      service.disposeGroup(group1);
-      service.disposeGroup(group2);
+      service
+        ..disposeGroup(group1)
+        ..disposeGroup(group2);
       expect(service.toObject(aId), equals(a));
       service.disposeGroup(group3);
       expect(() => service.toObject(aId), throwsFlutterError);
@@ -934,9 +935,10 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       final Element elementA = find.text('a').evaluate().first;
       final Element elementB = find.text('b').evaluate().first;
 
-      service.disposeAllGroups();
-      service.setPubRootDirectories(<String>[]);
-      service.setSelection(elementA, 'my-group');
+      service
+        ..disposeAllGroups()
+        ..setPubRootDirectories(<String>[])
+        ..setSelection(elementA, 'my-group');
       final Map<String, Object?> jsonA = json.decode(service.getSelectedWidget(null, 'my-group')) as Map<String, Object?>;
       final Map<String, Object?> creationLocationA = jsonA['creationLocation']! as Map<String, Object?>;
       expect(creationLocationA, isNotNull);
@@ -1013,11 +1015,11 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
           segments.take(segments.length - 2).join('/');
         service.setPubRootDirectories(<String>[pubRootTest]);
       }
-      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder();
-      builder.add(StringProperty('dummy1', 'value'));
-      builder.add(StringProperty('dummy2', 'value'));
-      builder.add(DiagnosticsStackTrace('When the exception was thrown, this was the stack', null));
-      builder.add(DiagnosticsDebugCreator(DebugCreator(elementA)));
+      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder()
+        ..add(StringProperty('dummy1', 'value'))
+        ..add(StringProperty('dummy2', 'value'))
+        ..add(DiagnosticsStackTrace('When the exception was thrown, this was the stack', null))
+        ..add(DiagnosticsDebugCreator(DebugCreator(elementA)));
 
       final List<DiagnosticsNode> nodes = List<DiagnosticsNode>.from(debugTransformDebugCreator(builder.properties));
       expect(nodes.length, 5);
@@ -1076,11 +1078,11 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
           segments.take(segments.length - 2).join('/');
         service.setPubRootDirectories(<String>[pubRootTest]);
       }
-      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder();
-      builder.add(StringProperty('dummy1', 'value'));
-      builder.add(DiagnosticsDebugCreator(DebugCreator(elementA)));
-      builder.add(StringProperty('dummy2', 'value'));
-      builder.add(DiagnosticsStackTrace('When the exception was thrown, this was the stack', null));
+      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder()
+        ..add(StringProperty('dummy1', 'value'))
+        ..add(DiagnosticsDebugCreator(DebugCreator(elementA)))
+        ..add(StringProperty('dummy2', 'value'))
+        ..add(DiagnosticsStackTrace('When the exception was thrown, this was the stack', null));
 
       final List<DiagnosticsNode> nodes = List<DiagnosticsNode>.from(debugTransformDebugCreator(builder.properties));
       expect(nodes.length, 5);
@@ -1125,10 +1127,10 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       );
       final Element elementA = find.text('a').evaluate().first;
 
-      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder();
-      builder.add(ErrorSummary('A RenderFlex overflowed by 273 pixels on the bottom'));
-      builder.add(DiagnosticsDebugCreator(DebugCreator(elementA)));
-      builder.add(StringProperty('dummy2', 'value'));
+      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder()
+        ..add(ErrorSummary('A RenderFlex overflowed by 273 pixels on the bottom'))
+        ..add(DiagnosticsDebugCreator(DebugCreator(elementA)))
+        ..add(StringProperty('dummy2', 'value'));
 
       final List<DiagnosticsNode> nodes = List<DiagnosticsNode>.from(debugTransformDebugCreator(builder.properties));
       expect(nodes.length, 6);
@@ -1159,10 +1161,10 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       );
       final Element elementA = find.text('a').evaluate().first;
 
-      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder();
-      builder.add(ErrorSummary('some other error'));
-      builder.add(DiagnosticsDebugCreator(DebugCreator(elementA)));
-      builder.add(StringProperty('dummy2', 'value'));
+      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder()
+        ..add(ErrorSummary('some other error'))
+        ..add(DiagnosticsDebugCreator(DebugCreator(elementA)))
+        ..add(StringProperty('dummy2', 'value'));
 
       final List<DiagnosticsNode> nodes = List<DiagnosticsNode>.from(debugTransformDebugCreator(builder.properties));
       expect(nodes.length, 4);
@@ -1191,10 +1193,10 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       );
       final Element elementA = find.text('a').evaluate().first;
 
-      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder();
-      builder.add(ErrorSummary('A RenderFlex overflowed by 273 pixels on the bottom'));
-      builder.add(DiagnosticsDebugCreator(DebugCreator(elementA)));
-      builder.add(StringProperty('dummy2', 'value'));
+      final DiagnosticPropertiesBuilder builder = DiagnosticPropertiesBuilder()
+        ..add(ErrorSummary('A RenderFlex overflowed by 273 pixels on the bottom'))
+        ..add(DiagnosticsDebugCreator(DebugCreator(elementA)))
+        ..add(StringProperty('dummy2', 'value'));
 
       final List<DiagnosticsNode> nodes = List<DiagnosticsNode>.from(debugTransformDebugCreator(builder.properties));
       expect(nodes.length, 4);
@@ -1219,9 +1221,10 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       );
       final Element elementA = find.text('a').evaluate().first;
 
-      service.disposeAllGroups();
-      service.setPubRootDirectories(<String>[]);
-      service.setSelection(elementA, 'my-group');
+      service
+        ..disposeAllGroups()
+        ..setPubRootDirectories(<String>[])
+        ..setSelection(elementA, 'my-group');
       Map<String, Object?> jsonObject = json.decode(service.getSelectedWidget(null, 'my-group')) as Map<String, Object?>;
       Map<String, Object?> creationLocation = jsonObject['creationLocation']! as Map<String, Object?>;
       expect(creationLocation, isNotNull);
@@ -1232,9 +1235,10 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       // Strip a couple subdirectories away to generate a plausible pub root
       // directory.
       final String pubRootTest = '/' + segments.take(segments.length - 2).join('/');
-      service.setPubRootDirectories(<String>[pubRootTest]);
+      service
+        ..setPubRootDirectories(<String>[pubRootTest])
 
-      service.setSelection(elementA, 'my-group');
+        ..setSelection(elementA, 'my-group');
       expect(json.decode(service.getSelectedWidget(null, 'my-group')), contains('createdByLocalProject'));
 
       service.setPubRootDirectories(<String>['/invalid/$pubRootTest']);
@@ -1258,8 +1262,9 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
         of: find.text('a'),
         matching: find.byType(RichText),
       ).evaluate().first;
-      service.setSelection(richText, 'my-group');
-      service.setPubRootDirectories(<String>[pubRootTest]);
+      service
+        ..setSelection(richText, 'my-group')
+        ..setPubRootDirectories(<String>[pubRootTest]);
       jsonObject = json.decode(service.getSelectedWidget(null, 'my-group')) as Map<String, Object?>;
       expect(jsonObject, isNot(contains('createdByLocalProject')));
       creationLocation = jsonObject['creationLocation']! as Map<String, Object?>;
@@ -1276,8 +1281,9 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       service.setSelection(elementA, 'my-group');
       expect(json.decode(service.getSelectedWidget(null, 'my-group')), isNot(contains('createdByLocalProject')));
 
-      service.setPubRootDirectories(<String>[pubRootFramework, pubRootTest]);
-      service.setSelection(elementA, 'my-group');
+      service
+        ..setPubRootDirectories(<String>[pubRootFramework, pubRootTest])
+        ..setSelection(elementA, 'my-group');
       expect(json.decode(service.getSelectedWidget(null, 'my-group')), contains('createdByLocalProject'));
       service.setSelection(richText, 'my-group');
       expect(json.decode(service.getSelectedWidget(null, 'my-group')), contains('createdByLocalProject'));
@@ -1833,8 +1839,9 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
         of: find.text('a'),
         matching: find.byType(RichText),
       ).evaluate().first;
-      service.setSelection(richText, 'my-group');
-      service.setPubRootDirectories(<String>[pubRootTest]);
+      service
+        ..setSelection(richText, 'my-group')
+        ..setPubRootDirectories(<String>[pubRootTest]);
       jsonObject = json.decode(service.getSelectedWidget(null, 'my-group')) as Map<String, Object?>;
       expect(jsonObject, isNot(contains('createdByLocalProject')));
       creationLocation = jsonObject['creationLocation']! as Map<String, Object?>;
@@ -1983,8 +1990,8 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       expect(clocks.length, equals(6));
       // Update a single clock.
       StatefulElement clockElement = clocks.first as StatefulElement;
-      _ClockTextState state = clockElement.state as _ClockTextState;
-      state.updateTime(); // Triggers a rebuild.
+      _ClockTextState state = clockElement.state as _ClockTextState
+        ..updateTime(); // Triggers a rebuild.
       await tester.pump();
       expect(rebuildEvents.length, equals(1));
       event = rebuildEvents.removeLast();
@@ -2017,8 +2024,8 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       // Update 3 of the clocks;
       for (int i = 0; i < 3; i++) {
         clockElement = clocks[i] as StatefulElement;
-        state = clockElement.state as _ClockTextState;
-        state.updateTime(); // Triggers a rebuild.
+        state = clockElement.state as _ClockTextState
+          ..updateTime(); // Triggers a rebuild.
       }
 
       await tester.pump();
@@ -2050,10 +2057,10 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
 
       // Update one clock 3 times.
       clockElement = clocks.first as StatefulElement;
-      state = clockElement.state as _ClockTextState;
-      state.updateTime(); // Triggers a rebuild.
-      state.updateTime(); // Triggers a rebuild.
-      state.updateTime(); // Triggers a rebuild.
+      state = clockElement.state as _ClockTextState
+        ..updateTime() // Triggers a rebuild.
+        ..updateTime() // Triggers a rebuild.
+        ..updateTime(); // Triggers a rebuild.
 
       await tester.pump();
       expect(rebuildEvents.length, equals(1));
@@ -2183,8 +2190,8 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
       expect(clocks.length, equals(6));
       // Update a single clock.
       final StatefulElement clockElement = clocks.first as StatefulElement;
-      final _ClockTextState state = clockElement.state as _ClockTextState;
-      state.updateTime(); // Triggers a rebuild.
+      final _ClockTextState state = clockElement.state as _ClockTextState
+        ..updateTime(); // Triggers a rebuild.
       await tester.pump();
       expect(repaintEvents.length, equals(1));
       event = repaintEvents.removeLast();
@@ -2422,8 +2429,7 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
         // Verify calling the screenshot method still works if the RenderObject
         // needs to be laid out again.
         final RenderObject container =
-            find.byKey(outerContainerKey).evaluate().single.renderObject!;
-        container
+            find.byKey(outerContainerKey).evaluate().single.renderObject!
           ..markNeedsLayout()
           ..markNeedsPaint();
         expect(container.debugNeedsLayout, isTrue);
